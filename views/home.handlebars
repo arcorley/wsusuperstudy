@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+
+.col-sm-6{
+	border: 1px solid #0c5449;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+}
+
+#eligibleButton{
+	background-color:#0c5449;
+	border-color:#0c5449;
+}
+
+#returningButton{
+	color: #0c5449;
+}
+
+#studyName{
+	position: absolute;
+	left: 40%;
+	top: 20%;
+</style>
+
+<nav class="navbar" style="border-bottom: 1px solid #0c5449;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<img src="images/lab_logo.jpg" height=136 width=309>
+		</div>
+		<div id="studyName" class="nav navbar-nav">
+			<h2 style="color: #0c5449;"> WSU "SUPER" Study </h2>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-8">
+			<p style="padding-left: 10px; color: #0c5449;"> Thank you for your interest in our "SUPER" (Study to Understand Pain Experiences in Relationships) study! </p>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+	<div class="row" style="padding-top: 10px;">
+		<div class="col-sm-10">
+			<p style="padding-left: 10px; color: #0c5449;"> <u> About the Study </u> </p>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-10">
+			<p style="padding-left: 10px; color: #0c5449;">
+				It involves a 2 - 3 hour laboratory visit in which you and your romantic partner will be asked to complete surveys, engage in a videotaped discussion about pain, and complete household tasks. We will also ask you to complete surveys online within 2 days before your laboratory visit and 1 month after your lab visit. For your participation in the lab visit, you and your partner will be compensated with a $100 gift card (1 gift card per couple).
+			</p>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+</div>
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6" >
+			<button type="button" id="eligibleButton" class="btn btn-primary center-block" onclick="location.href='http://wsusuperstudy.com/add-new';" >Am I Eligible?</button><br>
+			<button type="button" id="returningButton" class="btn btn-link center-block">My Romantic Partner Already Completed Some Information </button>
+		</div>
+		<div class="col-sm-3" ></div>
+	</div>
+</div>
+
+
+</body>
+</html>

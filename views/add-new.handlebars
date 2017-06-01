@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+</head>
+
+<script src="scripts/functions.js"></script>
+
+<style>
+fieldset{
+	text-align: left;
+}
+</style>
+
+<body>
+<h2 style="color: #0c5449; padding-left: 10px; text-align: center;">New Participant Eligibility Form </h2> </br></br>
+
+<div class="container-fluid">
+
+	<form class="form-horizontal">
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_first_nm" style="color: #0c5449;" class="control-label col-sm-2">First Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_first_nm">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_last_nm" style="color: #0c5449;" class="control-label col-sm-2">Last Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_last_nm">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Phone Number:</label>
+			<div class="col-sm-2">
+				<input type="tel" class="form-control" id="ppt_phone_no">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_line_1" style="color: #0c5449;" class="control-label col-sm-2">Address Line 1:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_line_1">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_line_2" style="color: #0c5449;" class="control-label col-sm-2">Address Line 2:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_line_2">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_city" style="color: #0c5449;" class="control-label col-sm-2">City:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_city">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_state" style="color: #0c5449;" class="control-label col-sm-2">State:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_state">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_zip" style="color: #0c5449;" class="control-label col-sm-2">ZIP Code:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="addr_zip">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="referred_by" style="color: #0c5449;" class="control-label col-sm-2">How did you hear about the study?</label>
+			<div class="col-sm-2">
+				<select id="referred_by" class="form-control">
+					<option value="academica">Academica</option>
+					<option value="craigslist">Craigslist</option>
+					<option value="div38">Div38 Listserv</option>
+					<option value="facebook">Facebook</option>
+					<option value="flyer">Flyer</option>
+					<option value="mpal">Michigan Psychological Association Listserv</option>
+					<option value="lab">The Relationships & Health Lab contacted me</option>
+					<option value="twitter">Twitter</option>
+					<option value="other">Other Listserv</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="future_contact" style="color: #0c5449;" class="control-label col-sm-2">Would you like to be contacted for future studies?</label>
+			<div class="col-sm-2">
+				<select id="future_contact" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_interest" style="color: #0c5449;" class="control-label col-sm-2">Is your partner willing to participate in the study?</label>
+			<div class="col-sm-2">
+				<select id="partner_interest" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div>		
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_first_nm" style="color: #0c5449;" class="control-label col-sm-2">Partner First Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_first_nm">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_last_nm" style="color: #0c5449;" class="control-label col-sm-2">Partner Last Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_last_nm">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Partner Phone Number:</label>
+			<div class="col-sm-2">
+				<input type="tel" class="form-control" id="partner_phone_no">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_email" style="color: #0c5449;" class="control-label col-sm-2">Partner Email Address:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_email">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="english_check" style="color: #0c5449;" class="control-label col-sm-2">Can both you and your romantic partner speak, read, and write in English?</label>
+			<div class="col-sm-2">
+				<select id="english_check" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div>				
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_age" style="color: #0c5449;" class="control-label col-sm-2">Your Age:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="ppt_age">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_age" style="color: #0c5449;" class="control-label col-sm-2">Partner's Age:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="partner_age">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="married_flag" style="color: #0c5449;" class="control-label col-sm-2">Are you married?</label>
+			<div class="col-sm-2">
+				<select id="married_flag" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div>	</br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label style="color:#0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-6">How long have you and your current partner been in a romantic relationship?</label>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="rel_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="rel_length_yrs">
+			</div>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="rel_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="rel_length_mos">
+			</div>
+		</div> <br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="living_together" style="color: #0c5449;" class="control-label col-sm-2">Are you living together?</label>
+			<div class="col-sm-2">
+				<select id="living_together" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label style="color:#0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-6">How long have you been living together?</label>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="living_together_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="living_together_yrs">
+			</div>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="living_together_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="living_together_mos">
+			</div>
+		</div>	<br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Do you have any pain that occurs nearly every day?</label>
+			<div class="col-sm-2">
+				<select id="ppt_daily_pain" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label style="color: #0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-2">How long has your pain lasted?</label>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="ppt_pain_length_yrs">
+			</div>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="ppt_pain_length_mos">
+			</div>
+		</div> <br>	
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_location" style="color:#0c5449;" class="control-label col-sm-2">Where is your pain located?</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_pain_location">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_level" style="color: #0c5449;" class="control-label col-sm-2">On a scale from 0 (no pain) to 10 (pain as bad as you can imagine), what number best describes your chronic pain intensity on average?</label>
+			<div class="col-sm-1">
+				<select id="ppt_pain_level" class="form-control">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</div>
+		</div>	<br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">On a scale from 0 (pain does not interfere at all) to 10 (pain completely interferes), how much does pain interfere with your general activity on average?</label>
+			<div class="col-sm-1">
+				<select id="ppt_pain_interference" class="form-control">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</div>
+		</div>	<br>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Does your romantic partner have any pain that occurs nearly every day?</label>
+			<div class="col-sm-2">
+				<select id="partner_daily_pain" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="formgroup">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-4">
+				<button type="button" id="submitNew" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary center-block" onclick="addNew()" />Submit</button><br><br> 
+			</div>
+		</div>
+
+	</form>
+
+</div>
+
+</body>
+</html>
