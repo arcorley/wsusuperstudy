@@ -73,7 +73,7 @@ app.get('/partner_no_pain', function(req, res, next){
 });
 
 /*******************RETURNING PARTNER PAGE****************/
-app.get('returning_partner', function(req, res, next){
+app.get('/returning_partner', function(req, res, next){
 	if (req.headers["x-forwarded-for"]){		
 	res.render('returning-partner');
 	}
@@ -84,9 +84,9 @@ app.get('returning_partner', function(req, res, next){
 
 /*******************RETURN PPT ID FOR RETURNING PARTNER PAGE****************/
 app.get('/get-ppt-id', function(req,res,next){
-	mysql.pool.query('SELECT ppt_id FROM super_study.participants WHERE ppt_first_nm=? AND ppt_last_nm=?',
-		[req.body.ppt_first_nm, req.body.ppt_last_nm],
-		function(err, result){
+	mysql.pool.query("SELECT ppt_id FROM super_study.participants WHERE ppt_first_nm=? OR (ppt_first_nm=? AND ppt_last_nm=?)",
+		[req.query.ppt_first_nm, req.query.ppt_first_nm, req.query.ppt_last_nm],
+		function(err, rows, fields){
 			if(err){
 				next(err);
 				return;
