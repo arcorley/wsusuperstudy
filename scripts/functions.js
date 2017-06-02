@@ -53,8 +53,12 @@ function addNew(){
 		req.send(formData);
 
 		req.addEventListener('load', function(){
-			alert("Thank you for your interest in our study!");
-			window.location = "http://www.wsusuperstudy.com";
+			if (partner_daily_pain == "yes"){
+				window.location = "http://www.wsusuperstudy.com/partner_pain"
+			}
+			else{
+				window.location = "http://www.wsusuperstudy.com/partner_no_pain"
+			}
 		});
 	}
 	else{

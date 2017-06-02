@@ -52,6 +52,26 @@ app.post('/insert-ppt', function(req, res, next){
 	res.send();
 });
 
+/******************PARTNER PAIN LANDING PAGE***********/
+app.get('/partner_pain', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){		
+	res.render('partner-pain-landing');
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
+/******************PARTNER NO PAIN LANDING PAGE***********/
+app.get('/partner_no_pain', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){		
+	res.render('partner-no-pain-landing');
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
 /************RUN THE APP******************/
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
