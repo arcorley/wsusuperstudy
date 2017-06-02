@@ -72,6 +72,45 @@ app.get('/partner_no_pain', function(req, res, next){
 	}
 });
 
+/*******************RETURNING PARTNER PAGE****************/
+app.get('/returning_partner', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){		
+	res.render('returning-partner');
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
+/*******************RETURN PPT ID FOR RETURNING PARTNER PAGE****************/
+app.get('/get-ppt-id', function(req,res,next){
+	mysql.pool.query("SELECT ppt_id FROM super_study.participants WHERE ppt_first_nm=? OR (ppt_first_nm=? AND ppt_last_nm=?)",
+		[req.query.ppt_first_nm, req.query.ppt_first_nm, req.query.ppt_last_nm],
+		function(err, rows, fields){
+			if(err){
+				next(err);
+				return;
+			}
+
+			var output = JSON.stringify(rows);
+			res.send(output);
+		});
+});
+
+/***************UPDATE RECORD WITH RETURNING PARTNER INFO****************/
+app.post('/insert_returning_partner', function(req,res,next){
+	mysql.pool.query("UPDATE super_study.participants SET partner_first_nm=?, partner_last_nm=?, partner_pain_length=?, partner_pain_location=?, partner_pain_level=?, partner_pain_interference=? WHERE ppt_id=?",
+	[req.body.partner_first_nm, req.body.partner_last_nm, req.body.partner_pain_length, req.body.partner_pain_location, req.body.partner_pain_level, req.body.partner_pain_interference, req.body.ppt_id],
+	function(err, result){
+		if(err){
+			next(err);
+			return;
+		}
+	});
+
+	res.send();
+});
+
 /************RUN THE APP******************/
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
