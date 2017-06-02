@@ -82,16 +82,19 @@ function updateReturning(){
 	if (ppt_first_nm && partner_first_nm){
 		var idRequestData = {ppt_first_nm: ppt_first_nm, ppt_last_nm: ppt_last_nm}; //prep a JSON object to send in a GET request
 
+
 		var idReq = new XMLHttpRequest();
-		req.open('GET', 'http://wsusuperstudy.com/get-ppt-id', true); //submit the GET request for the ppt id so we know which record to update
+		idReq.open('GET', 'http://wsusuperstudy.com/get-ppt-id?ppt_first_nm=' + ppt_first_nm + '&ppt_last_nm=' + ppt_last_nm, true); //submit the GET request for the ppt id so we know which record to update
+		idReq.setRequestHeader("Content-Type", "application/json");
 
 		idRequestData = JSON.stringify(idRequestData);
-		req.send(formData); //send the request
 
-		req.addEventListener('load', function(){
-			var response = JSON.parse(idRequestData.responseText); //parse the response
+		idReq.send(idRequestData); //send the request
 
-			if (response[0].ppt_id){ //there will only be one record in the response, so 0 is valid here.
+		idReq.addEventListener('load', function(){
+			var response = JSON.parse(idReq.responseText); //parse the response
+
+			if (response.length > 0){ //if we got a response, continue.
 				var ppt_id = response[0].ppt_id;
 
 				var formData = {partner_first_nm: partner_first_nm, partner_last_nm: partner_last_nm, partner_pain_length: partner_pain_length,
@@ -109,7 +112,7 @@ function updateReturning(){
 				});			
 			}
 			else{
-				alert("The name entered for Your Partner's First and Last Name did not match any of the names in our system./n Please enter a valid name to continue.");
+				alert("The name entered for Your Partner's First and Last Name did not match any of the names in our system. Please enter a valid name to continue.");
 			}
 		});
 	}
