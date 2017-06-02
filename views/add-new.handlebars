@@ -16,6 +16,10 @@
 fieldset{
 	text-align: left;
 }
+
+#referred_hidden{
+	display: none;
+}
 </style>
 
 <body>
@@ -98,11 +102,22 @@ fieldset{
 					<option value="div38">Div38 Listserv</option>
 					<option value="facebook">Facebook</option>
 					<option value="flyer">Flyer</option>
+					<option value="prp">HBEC PRP</option>
+					<option value="lunch_and_learn">HBEC Lunch and Learn Event</option>
+					<option value="direct_recruitment">DMC Direct Recruitment</option>
 					<option value="mpal">Michigan Psychological Association Listserv</option>
 					<option value="lab">The Relationships & Health Lab contacted me</option>
 					<option value="twitter">Twitter</option>
-					<option value="other">Other Listserv</option>
+					<option value="other">Other</option>
 				</select>
+			</div>
+		</div>
+
+		<div class="form-group" id="referred_hidden">
+			<div class="col-sm-3"></div>
+			<label for="referred_by_other" style="color: #0c5449;" class="control-label col-sm-2">If Other, how did you hear about the study?</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="referred_by_other">
 			</div>
 		</div>
 
@@ -116,6 +131,18 @@ fieldset{
 				</select>
 			</div>
 		</div>	
+
+		<div class="form-group" id="future_contact_hidden">
+			<div class="col-sm-3"></div>
+			<label for="future_contact_method" style="color: #0c5449;" class="control-label col-sm-2">If yes, how would you like to be contacted?</label>
+			<div class="col-sm-2">
+				<select id="future_contact_method" class="form-control">
+					<option value="email">Email</option>
+					<option value="phone">Phone</option>
+					<option value="mail">Mail</option>
+				</select>
+			</div>
+		</div>		
 
 		<div class="form-group">
 			<div class="col-sm-3"></div>
@@ -230,12 +257,12 @@ fieldset{
 			</div>
 		</div> <br>
 
-		<div class="form-group">
+		<div class="form-group" id="living_together_hidden">
 			<div class="col-sm-3"></div>
 			<label style="color:#0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-6">How long have you been living together?</label>
 		</div>
 
-		<div class="form-group"> 
+		<div class="form-group" id="living_together_hidden_yrs"> 
 			<div class="col-sm-3"></div>
 			<label for="living_together_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
@@ -243,7 +270,7 @@ fieldset{
 			</div>
 		</div>
 
-		<div class="form-group"> 
+		<div class="form-group" id="living_together_hidden_mos"> 
 			<div class="col-sm-3"></div>
 			<label for="living_together_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
