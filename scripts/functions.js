@@ -8,7 +8,9 @@ function addNew(){
 	var addr_state = document.getElementById("addr_state").value;
 	var addr_zip = document.getElementById("addr_zip").value;
 	var referred_by = document.getElementById("referred_by").value;
+	var referred_by_other = document.getElementById("referred_by_other").value;
 	var future_contact = document.getElementById("future_contact").value;
+	var future_contact_method = document.getElementById("future_contact_method").value;
 	var partner_interest = document.getElementById("partner_interest").value;
 	var partner_first_nm = document.getElementById("partner_first_nm").value;
 	var partner_last_nm = document.getElementById("partner_last_nm").value;
@@ -37,13 +39,11 @@ function addNew(){
 
 	if (ppt_first_nm && ppt_phone_no){
 		var formData = {ppt_first_nm: ppt_first_nm, ppt_last_nm: ppt_last_nm, ppt_phone_no: ppt_phone_no, addr_line_1: addr_line_1, addr_line_2: addr_line_2, 
-						addr_city: addr_city, addr_state: addr_state, addr_zip: addr_zip, referred_by: referred_by, future_contact: future_contact, 
-						partner_interest: partner_interest, partner_first_nm: partner_first_nm, partner_last_nm: partner_last_nm, partner_phone_no: partner_phone_no, 
+						addr_city: addr_city, addr_state: addr_state, addr_zip: addr_zip, referred_by: referred_by, referred_by_other: referred_by_other, future_contact: future_contact, 
+						future_contact_method: future_contact_method, partner_interest: partner_interest, partner_first_nm: partner_first_nm, partner_last_nm: partner_last_nm, partner_phone_no: partner_phone_no, 
 						partner_email: partner_email, english_check: english_check, ppt_age: ppt_age, partner_age: partner_age, married_flag: married_flag, rel_length: rel_length, 
 						living_together: living_together, living_together_length: living_together_length, ppt_daily_pain: ppt_daily_pain, ppt_pain_length: ppt_pain_length, 
 						ppt_pain_location: ppt_pain_location, ppt_pain_level: ppt_pain_level, ppt_pain_interference: ppt_pain_interference, partner_daily_pain: partner_daily_pain};
-
-		console.log(formData);
 
 		var req = new XMLHttpRequest();
 		req.open('POST', 'http://wsusuperstudy.com/insert-ppt', true);
