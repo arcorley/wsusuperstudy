@@ -73,6 +73,7 @@ function updateReturning(){
 	var partner_last_nm = document.getElementById("partner_last_nm").value;
 	var ppt_first_nm = document.getElementById("ppt_first_nm").value;
 	var ppt_last_nm = document.getElementById("ppt_last_nm").value;
+	var partner_daily_pain = document.getElementById("partner_daily_pain").value;
 	var partner_pain_length = document.getElementById("partner_pain_length_mos").value + (document.getElementById("partner_pain_length_yrs").value * 12);
 	var partner_pain_location = document.getElementById("partner_pain_location").value;	
 	var partner_pain_level = document.getElementById("partner_pain_level").value;
@@ -97,7 +98,7 @@ function updateReturning(){
 			if (response.length > 0){ //if we got a response, continue.
 				var ppt_id = response[0].ppt_id;
 
-				var formData = {partner_first_nm: partner_first_nm, partner_last_nm: partner_last_nm, partner_pain_length: partner_pain_length,
+				var formData = {partner_first_nm: partner_first_nm, partner_last_nm: partner_last_nm, partner_pain_length: partner_pain_length, partner_daily_pain: partner_daily_pain,
 							    partner_pain_location: partner_pain_location, partner_pain_level: partner_pain_level, partner_pain_interference: partner_pain_interference, ppt_id: ppt_id};
 
 				var req = new XMLHttpRequest();
@@ -158,3 +159,26 @@ $(document).ready(function(){
 	});
 
 });
+
+function userLogin(){
+	var user = document.getElementById("username").value;
+	var pass = document.getElementById("pwd").value;
+
+	var formData = {userName: user, userPassword: pass};
+
+	var req = new XMLHttpRequest();
+	req.open('POST', 'http://wsusuperstudy.com/authenticate', true);
+	req.setRequestHeader("Content-Type", "application/json");
+
+	formData = JSON.stringify(formData);
+	req.send(formData);
+
+	req.addEventListener('load', function(){ //listen for a response
+			if(req.status == 200){
+				window.location = "http://www.wsusuperstudy.com/test";
+			}
+			else{
+				alert("The username/password combination supplied was incorrect.");
+			}
+		});
+}
