@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<script src="scripts/functions.js"></script>
+
+<style>
+#studyName{
+	position: absolute;
+	left: 40%;
+	top: 20%;
+}
+</style>
+
+<nav class="navbar" style="border-bottom: 1px solid #0c5449;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<img src="images/lab_logo.jpg" height=136 width=309>
+		</div>
+		<div id="studyName" class="nav navbar-nav">
+			<h2 style="color: #0c5449;"> WSU "SUPER" Study </h2>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="username" style="color: #0c5449;" class="control-label col-sm-2">Username:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="username">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="pwd" style="color: #0c5449;" class="control-label col-sm-2">Password:</label>
+			<div class="col-sm-2">
+				<input type="password" class="form-control" id="pwd">
+			</div>
+		</div>
+
+		<div class="formgroup">
+			<div class="col-sm-5"></div>
+			<div class="col-sm-2">
+				<button type="button" id="submitNew" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary center-block" onclick="userLogin()" />Submit</button><br><br> 
+			</div>
+		</div>
+	</form>
+</div>
