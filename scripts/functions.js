@@ -48,18 +48,19 @@ function addNew(){
 					ppt_pain_location: ppt_pain_location, ppt_pain_level: ppt_pain_level, ppt_pain_interference: ppt_pain_interference, partner_daily_pain: partner_daily_pain};
 
 	var req = new XMLHttpRequest();
-	req.open('POST', 'http://wsusuperstudy.com/insert-ppt', true);
+	req.open('POST', 'https://www.wsusuperstudy.com/insert-ppt', true);
 	req.setRequestHeader("Content-Type", "application/json");
+	req.setRequestHeader("X-Forwarded-Proto", "https");
 
 	formData = JSON.stringify(formData);
 	req.send(formData);
 
 	req.addEventListener('load', function(){
 		if (partner_daily_pain == "yes"){
-			window.location = "http://www.wsusuperstudy.com/partner_pain";
+			window.location = "https://www.wsusuperstudy.com/partner_pain";
 		}
 		else{
-			window.location = "http://www.wsusuperstudy.com/partner_no_pain";
+			window.location = "https://www.wsusuperstudy.com/partner_no_pain";
 		}
 	});
 }
@@ -81,8 +82,9 @@ function updateReturning(){
 
 
 		var idReq = new XMLHttpRequest();
-		idReq.open('GET', 'http://wsusuperstudy.com/get-ppt-id?ppt_first_nm=' + ppt_first_nm + '&ppt_last_nm=' + ppt_last_nm, true); //submit the GET request for the ppt id so we know which record to update
+		idReq.open('GET', 'https://www.wsusuperstudy.com/get-ppt-id?ppt_first_nm=' + ppt_first_nm + '&ppt_last_nm=' + ppt_last_nm, true); //submit the GET request for the ppt id so we know which record to update
 		idReq.setRequestHeader("Content-Type", "application/json");
+		idReq.setRequestHeader("X-Forwarded-Proto", "https");
 
 		idRequestData = JSON.stringify(idRequestData);
 
@@ -98,14 +100,15 @@ function updateReturning(){
 							    partner_pain_location: partner_pain_location, partner_pain_level: partner_pain_level, partner_pain_interference: partner_pain_interference, ppt_id: ppt_id};
 
 				var req = new XMLHttpRequest();
-				req.open('POST', 'http://wsusuperstudy.com/insert_returning_partner', true);
+				req.open('POST', 'https://www.wsusuperstudy.com/insert_returning_partner', true);
 				req.setRequestHeader("Content-Type", "application/json");
+				req.setRequestHeader("X-Forwarded-Proto", "https");
 
 				formData = JSON.stringify(formData);
 				req.send(formData);
 
 				req.addEventListener('load', function(){
-					window.location = "http://www.wsusuperstudy.com/partner_no_pain";
+					window.location = "https://www.wsusuperstudy.com/partner_no_pain";
 				});			
 			}
 			else{
@@ -163,15 +166,16 @@ function userLogin(){
 	var formData = {userName: user, userPassword: pass};
 
 	var req = new XMLHttpRequest();
-	req.open('POST', 'http://wsusuperstudy.com/authenticate', true);
+	req.open('POST', 'https://www.wsusuperstudy.com/authenticate', true);
 	req.setRequestHeader("Content-Type", "application/json");
+	req.setRequestHeader("X-Forwarded-Proto", "https");
 
 	formData = JSON.stringify(formData);
 	req.send(formData);
 
 	req.addEventListener('load', function(){ //listen for a response
 			if(req.status == 200){
-				window.location = "http://www.wsusuperstudy.com/test";
+				window.location = "https://www.wsusuperstudy.com/test";
 			}
 			else{
 				alert("The username/password combination supplied was incorrect.");
