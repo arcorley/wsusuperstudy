@@ -4,7 +4,9 @@ var express = require('express');
 
 var app = express();
 var handlebars = require('express-handlebars').create();
+var session = require('express-session');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -12,14 +14,24 @@ var mysql = require('./dbcon.js');
 
 var sha256 = require('js-sha256').sha256;
 
+var tools = require('./config/tools.js');
+tools.setParams();
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 8080);
 
+app.enable('trust proxy');
+app.set('trust proxy', 1); // trust first proxy
+
+app.use(session({secret:process.env.secret, cookie: {httpOnly: false, proxy: true, secure: true}}));
+
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-/**************INDEX/TEAM PAGE******************/
+app.use(cookieParser());
+
+/**************INDEX PAGE******************/
 app.get('/', function(req,res,next){
 	if (req.headers["x-forwarded-for"]){		
 	res.render('home');
@@ -128,15 +140,17 @@ app.post('/authenticate',function(req,res,next){
   var pass = sha256(req.body.userPassword);
   console.log(pass);
 
-  mysql.pool.query('SELECT password FROM super_study.users WHERE user_nm = ?', [req.body.userName], function(err, rows, fields){
+  mysql.pool.query('SELECT user_nm, password FROM super_study.users WHERE user_nm = ?', [req.body.userName], function(err, rows, fields){
     if(err){
       next(err);
       return;
     }
 
   var authPass = rows;
-
+ 
   if(pass === authPass[0].password){
+	req.session.name = authPass[0].user_nm;
+	req.session.save();
     res.status(200).send();
   }
   else{
@@ -148,8 +162,13 @@ app.post('/authenticate',function(req,res,next){
 
 /****************GENERATE TEST PAGE******************/
 app.get('/test', function(req,res,next){
-	if (req.headers["x-forwarded-for"]){		
-	res.render('test');
+	if (req.headers["x-forwarded-for"]){
+			if (req.session.name){
+				res.render('test');
+			}
+			else {
+				res.redirect('lab_login');
+			}
 	}
 	else{
 		res.status(404).end();
