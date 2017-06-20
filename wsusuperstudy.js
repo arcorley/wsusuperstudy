@@ -175,6 +175,67 @@ app.get('/test', function(req,res,next){
 	}
 });
 
+/****************GENERATE LAB LOGIN LANDING PAGE******************/
+app.get('/lab_login_landing', function(req,res,next){
+	if (req.headers["x-forwarded-for"]){
+			if (req.session.name){
+				res.render('lab_login_landing');
+			}
+			else {
+				res.redirect('lab_login');
+			}
+	}
+	else{
+		console.log('sending a 404 error');
+		res.status(404).end();
+	}
+});
+
+/****************GENERATE PARTICIPANTS IN PROGRESS PAGE******************/
+app.get('/participants_in_progress', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){
+		if (req.session.name){
+			res.render('participants_in_progress');
+		}
+		else{
+			res.redirect('lab_login');
+		}
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
+/****************GENERATE CONTACT LOG PAGE******************/
+app.get('/contact_log', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){
+		if (req.session.name){
+			res.render('contact_log');
+		}
+		else{
+			res.redirect('lab_login');
+		}
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
+/****************GENERATE ALL PARTICIPANTS PAGE******************/
+app.get('/all_participants', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){
+		if (req.session.name){
+			res.render('all_participants');
+		}
+		else{
+			res.redirect('lab_login');
+		}
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
 /************RUN THE APP******************/
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');

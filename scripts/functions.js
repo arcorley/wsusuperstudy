@@ -175,7 +175,7 @@ function userLogin(){
 
 	req.addEventListener('load', function(){ //listen for a response
 			if(req.status == 200){
-				window.location = "https://www.wsusuperstudy.com/test";
+				window.location = "https://www.wsusuperstudy.com/lab_login_landing";
 			}
 			else{
 				alert("The username/password combination supplied was incorrect.");
