@@ -138,7 +138,6 @@ app.get('/lab_login', function(req,res,next){
 /******************AUTHENTICATE USER LOGINS***********************/
 app.post('/authenticate',function(req,res,next){
   var pass = sha256(req.body.userPassword);
-  console.log(pass);
 
   mysql.pool.query('SELECT user_nm, password FROM super_study.users WHERE user_nm = ?', [req.body.userName], function(err, rows, fields){
     if(err){
@@ -160,20 +159,6 @@ app.post('/authenticate',function(req,res,next){
 
 });
 
-/****************GENERATE TEST PAGE******************/
-app.get('/test', function(req,res,next){
-	if (req.headers["x-forwarded-for"]){
-			if (req.session.name){
-				res.render('test');
-			}
-			else {
-				res.redirect('lab_login');
-			}
-	}
-	else{
-		res.status(404).end();
-	}
-});
 
 /****************GENERATE LAB LOGIN LANDING PAGE******************/
 app.get('/lab_login_landing', function(req,res,next){
@@ -186,7 +171,6 @@ app.get('/lab_login_landing', function(req,res,next){
 			}
 	}
 	else{
-		console.log('sending a 404 error');
 		res.status(404).end();
 	}
 });
@@ -195,7 +179,15 @@ app.get('/lab_login_landing', function(req,res,next){
 app.get('/participants_in_progress', function(req, res, next){
 	if (req.headers["x-forwarded-for"]){
 		if (req.session.name){
-			res.render('participants_in_progress');
+			var context = {};
+			mysql.pool.query('SELECT * from super_study.participants_temp', function(err, rows, fields){
+				if(err){
+					next(err);
+					return;
+				}
+				context.ppt_results = rows;
+				res.render('participants_in_progress', context);
+			});
 		}
 		else{
 			res.redirect('lab_login');
@@ -235,6 +227,35 @@ app.get('/all_participants', function(req, res, next){
 		res.status(404).end();
 	}
 });
+
+/****************PARTICIPANTS IN PROGRESS DETAIL PAGE******************/
+app.get('/in_progress_detail', function(req, res, next){
+	if (req.headers["x-forwarded-for"]){
+		if (req.session.name){
+			var context = {};
+			mysql.pool.query('SELECT * from super_study.participants_temp WHERE ppt_id = ?;SELECT a.*, case when ref.referred_by IS NOT NULL then 'selected' when fc.future_contact IS NOT NULL then 'selected' when fcm.future_contact_method IS NOT NULL then 'selected' when pi.partner_interest IS NOT NULL then 'selected' when ec.english_check IS NOT NULL then 'selected' when lt.living_together IS NOT NULL then 'selected' when pdp.ppt_daily_pain IS NOT NULL then 'selected' when ppl.ppt_pain_level IS NOT NULL then 'selected' when ppi.ppt_pain_interference IS NOT NULL then 'selected' when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a LEFT JOIN (SELECT referred_by FROM super_study.participants_temp WHERE ppt_id =?) ref ON a.option_nm = ref.referred_by LEFT JOIN (SELECT future_contact FROM super_study.participants_temp WHERE ppt_id=?) fc ON a.option_nm = fc.future_contact LEFT JOIN (SELECT future_contact_method FROM super_study.participants_temp WHERE ppt_id=?) fcm ON a.option_nm = fcm.future_contact_method LEFT JOIN (SELECT partner_interest FROM super_study.participants_temp WHERE ppt_id=?) pi ON a.option_nm=pi.partner_interest LEFT JOIN (SELECT english_check FROM super_study.participants_temp WHERE ppt_id=?) ec ON a.option_nm=ec.english_check LEFT JOIN (SELECT married_flag FROM super_study.participants_temp WHERE ppt_id=?) mf ON a.option_nm=mf.married_flag LEFT JOIN (SELECT living_together FROM super_study.participants_temp WHERE ppt_id=?) lt ON a.option_nm=lt.living_together LEFT JOIN (SELECT ppt_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pdp ON a.option_nm=pdp.ppt_daily_pain LEFT JOIN (SELECT cast(ppt_pain_level as CHAR(2)) as ppt_pain_level FROM super_study.participants_temp WHERE ppt_id=?) ppl ON a.option_nm=ppl.ppt_pain_level AND a.field_nm = "ppt_pain_level" LEFT JOIN (SELECT cast(ppt_pain_interference as CHAR(2)) as ppt_pain_interference FROM super_study.participants_temp WHERE ppt_id=?) ppi ON a.option_nm=ppi.ppt_pain_interference AND a.field_nm = "ppt_pain_interference" LEFT JOIN (SELECT partner_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pd ON a.option_nm=pd.partner_daily_pain;',[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
+				if(err){
+					next(err);
+					return;
+				}
+				rows[0].rel_length_yrs = Math.round(rows[0].rel_length/12);
+				rows[0].rel_length_mos = Math.round(rows[0].rel_length%12);
+				console.log(rows[0]);
+				console.log(rows[1]);
+				context.ppt_results = rows[0];
+				context.options = rows[1];
+				res.render('in_progress_detail', context);
+			});
+		}
+		else{
+			res.redirect('lab_login');
+		}
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
 
 /************RUN THE APP******************/
 app.listen(app.get('port'), function(){
