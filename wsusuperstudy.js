@@ -230,10 +230,30 @@ app.get('/all_participants', function(req, res, next){
 
 /****************PARTICIPANTS IN PROGRESS DETAIL PAGE******************/
 app.get('/in_progress_detail', function(req, res, next){
-	if (req.headers["x-forwarded-for"]){
+	if (req.headers["x-forwarded-for"]){ 
 		if (req.session.name){
 			var context = {};
-			mysql.pool.query('SELECT * from super_study.participants_temp WHERE ppt_id = ?;SELECT a.*, case when ref.referred_by IS NOT NULL then 'selected' when fc.future_contact IS NOT NULL then 'selected' when fcm.future_contact_method IS NOT NULL then 'selected' when pi.partner_interest IS NOT NULL then 'selected' when ec.english_check IS NOT NULL then 'selected' when lt.living_together IS NOT NULL then 'selected' when pdp.ppt_daily_pain IS NOT NULL then 'selected' when ppl.ppt_pain_level IS NOT NULL then 'selected' when ppi.ppt_pain_interference IS NOT NULL then 'selected' when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a LEFT JOIN (SELECT referred_by FROM super_study.participants_temp WHERE ppt_id =?) ref ON a.option_nm = ref.referred_by LEFT JOIN (SELECT future_contact FROM super_study.participants_temp WHERE ppt_id=?) fc ON a.option_nm = fc.future_contact LEFT JOIN (SELECT future_contact_method FROM super_study.participants_temp WHERE ppt_id=?) fcm ON a.option_nm = fcm.future_contact_method LEFT JOIN (SELECT partner_interest FROM super_study.participants_temp WHERE ppt_id=?) pi ON a.option_nm=pi.partner_interest LEFT JOIN (SELECT english_check FROM super_study.participants_temp WHERE ppt_id=?) ec ON a.option_nm=ec.english_check LEFT JOIN (SELECT married_flag FROM super_study.participants_temp WHERE ppt_id=?) mf ON a.option_nm=mf.married_flag LEFT JOIN (SELECT living_together FROM super_study.participants_temp WHERE ppt_id=?) lt ON a.option_nm=lt.living_together LEFT JOIN (SELECT ppt_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pdp ON a.option_nm=pdp.ppt_daily_pain LEFT JOIN (SELECT cast(ppt_pain_level as CHAR(2)) as ppt_pain_level FROM super_study.participants_temp WHERE ppt_id=?) ppl ON a.option_nm=ppl.ppt_pain_level AND a.field_nm = "ppt_pain_level" LEFT JOIN (SELECT cast(ppt_pain_interference as CHAR(2)) as ppt_pain_interference FROM super_study.participants_temp WHERE ppt_id=?) ppi ON a.option_nm=ppi.ppt_pain_interference AND a.field_nm = "ppt_pain_interference" LEFT JOIN (SELECT partner_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pd ON a.option_nm=pd.partner_daily_pain;',[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
+			mysql.pool.query("SELECT * from super_study.participants_temp WHERE ppt_id = ?; SELECT a.*," +
+			"case when ref.referred_by IS NOT NULL then 'selected' when fc.future_contact IS NOT NULL then 'selected'" + 
+			" when fcm.future_contact_method IS NOT NULL then 'selected' when pin.partner_interest IS NOT NULL then 'selected'" + 
+			" when ec.english_check IS NOT NULL then 'selected' when mf.married_flag IS NOT NULL then 'selected'" +  
+			" when lt.living_together IS NOT NULL then 'selected' when pdp.ppt_daily_pain IS NOT NULL then 'selected'" + 
+			" when ppl.ppt_pain_level IS NOT NULL then 'selected' when ppi.ppt_pain_interference IS NOT NULL then 'selected'" + 
+			" when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected" +
+			" FROM super_study.options a LEFT JOIN (SELECT referred_by FROM super_study.participants_temp WHERE ppt_id =?) ref" +
+			" ON a.option_nm = ref.referred_by LEFT JOIN (SELECT future_contact FROM super_study.participants_temp WHERE ppt_id=?) fc" + 
+			" ON a.option_nm = fc.future_contact LEFT JOIN (SELECT future_contact_method FROM super_study.participants_temp WHERE ppt_id=?) fcm" + 
+			" ON a.option_nm = fcm.future_contact_method LEFT JOIN (SELECT partner_interest FROM super_study.participants_temp WHERE ppt_id=?) pin" + 
+			" ON a.option_nm=pin.partner_interest LEFT JOIN (SELECT english_check FROM super_study.participants_temp WHERE ppt_id=?) ec" + 
+			" ON a.option_nm=ec.english_check LEFT JOIN (SELECT married_flag FROM super_study.participants_temp WHERE ppt_id=?) mf" + 
+			" ON a.option_nm=mf.married_flag LEFT JOIN (SELECT living_together FROM super_study.participants_temp WHERE ppt_id=?) lt" + 
+			" ON a.option_nm=lt.living_together LEFT JOIN (SELECT ppt_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pdp" + 
+			" ON a.option_nm=pdp.ppt_daily_pain LEFT JOIN (SELECT cast(ppt_pain_level as CHAR(2)) as ppt_pain_level" + 
+			" FROM super_study.participants_temp WHERE ppt_id=?) ppl ON a.option_nm=ppl.ppt_pain_level AND a.field_nm = 'ppt_pain_level'" + 
+			" LEFT JOIN (SELECT cast(ppt_pain_interference as CHAR(2)) as ppt_pain_interference FROM super_study.participants_temp WHERE ppt_id=?) ppi" + 
+			" ON a.option_nm=ppi.ppt_pain_interference AND a.field_nm = 'ppt_pain_interference'" + 
+			" LEFT JOIN (SELECT partner_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pd" + 
+			" ON a.option_nm=pd.partner_daily_pain",[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
 				if(err){
 					next(err);
 					return;
