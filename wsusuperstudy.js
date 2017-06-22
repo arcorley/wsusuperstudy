@@ -246,7 +246,7 @@ app.get('/in_progress_detail', function(req, res, next){
 			" SELECT a.*, case when ec.english_check IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
 				" LEFT JOIN (SELECT english_check from super_study.participants_temp WHERE ppt_id=?) ec ON a.option_nm=ec.english_check;" +
 			" SELECT a.*, case when mf.married_flag IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
-				" LEFT JOIN (SELECT married_flag from super_study.participants_temp WHERE ppt_id=?) mf ON a.option_nm=mf.married_flag;"
+				" LEFT JOIN (SELECT married_flag from super_study.participants_temp WHERE ppt_id=?) mf ON a.option_nm=mf.married_flag;" +
 			" SELECT a.*, case when lt.living_together IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
 				" LEFT JOIN (SELECT living_together from super_study.participants_temp WHERE ppt_id=?) lt ON a.option_nm=lt.living_together;" +
 			" SELECT a.*, case when pdp.ppt_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
@@ -256,7 +256,7 @@ app.get('/in_progress_detail', function(req, res, next){
 				" ON a.option_nm=ppl.ppt_pain_level AND a.field_nm = 'ppt_pain_level';" +
 			" SELECT a.*, case when ppi.ppt_pain_interference IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
 				" LEFT JOIN (SELECT cast(ppt_pain_interference as CHAR(2)) as ppt_pain_interference FROM super_study.participants_temp WHERE ppt_id=?) ppi" +
-				" ON a.option_nm=ppi.ppt_pain_interference AND a.field_nm = 'ppt_pain_interference';"
+				" ON a.option_nm=ppi.ppt_pain_interference AND a.field_nm = 'ppt_pain_interference';" +
 			" SELECT a.*, case when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
 				" LEFT JOIN (SELECT partner_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pd ON a.option_nm=pd.partner_daily_pain;"
 			,[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
