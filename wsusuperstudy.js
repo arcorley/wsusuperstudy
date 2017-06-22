@@ -234,30 +234,30 @@ app.get('/in_progress_detail', function(req, res, next){
 		if (req.session.name){
 			var context = {};
 			mysql.pool.query("SELECT * from super_study.participants_temp WHERE ppt_id = ?;" + 
-			" SELECT a.*, case when ref.referred_by IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when ref.referred_by IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT referred_by FROM super_study.participants_temp WHERE ppt_id=?) ref ON a.option_nm=ref.referred_by;" +
-			" SELECT a.*, case when fc.future_contact IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when fc.future_contact IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT future_contact FROM super_study.participants_temp WHERE ppt_id=?) fc ON a.option_nm=fc.future_contact;" +
-			" SELECT a.*, case when fcm.future_contact_method IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when fcm.future_contact_method IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT future_contact_method from super_study.participants_temp WHERE ppt_id=?) fcm" +
 				" ON a.option_nm=fcm.future_contact_method;" +
-			" SELECT a.*, case when pin.partner_interest IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when pin.partner_interest IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT partner_interest from super_study.participants_temp WHERE ppt_id=?) pin ON a.option_nm=pin.partner_interest;" +
-			" SELECT a.*, case when ec.english_check IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when ec.english_check IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT english_check from super_study.participants_temp WHERE ppt_id=?) ec ON a.option_nm=ec.english_check;" +
-			" SELECT a.*, case when mf.married_flag IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when mf.married_flag IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT married_flag from super_study.participants_temp WHERE ppt_id=?) mf ON a.option_nm=mf.married_flag;" +
-			" SELECT a.*, case when lt.living_together IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when lt.living_together IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT living_together from super_study.participants_temp WHERE ppt_id=?) lt ON a.option_nm=lt.living_together;" +
-			" SELECT a.*, case when pdp.ppt_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when pdp.ppt_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT ppt_daily_pain from super_study.participants_temp WHERE ppt_id=?) pdp ON a.option_nm=pdp.ppt_daily_pain;" +
-			" SELECT a.*, case when ppl.ppt_pain_level IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when ppl.ppt_pain_level IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT cast(ppt_pain_level as CHAR(2)) as ppt_pain_level FROM super_study.participants_temp WHERE ppt_id=?) ppl" +
 				" ON a.option_nm=ppl.ppt_pain_level AND a.field_nm = 'ppt_pain_level';" +
-			" SELECT a.*, case when ppi.ppt_pain_interference IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when ppi.ppt_pain_interference IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT cast(ppt_pain_interference as CHAR(2)) as ppt_pain_interference FROM super_study.participants_temp WHERE ppt_id=?) ppi" +
 				" ON a.option_nm=ppi.ppt_pain_interference AND a.field_nm = 'ppt_pain_interference';" +
-			" SELECT a.*, case when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.participants_temp a" +
+			" SELECT a.*, case when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" +
 				" LEFT JOIN (SELECT partner_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pd ON a.option_nm=pd.partner_daily_pain;"
 			,[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
 				if(err){
