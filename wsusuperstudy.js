@@ -270,7 +270,7 @@ app.get('/in_progress_detail', function(req, res, next){
 			" SELECT a.*, case when pd.partner_daily_pain IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" + //11
 				" LEFT JOIN (SELECT partner_daily_pain FROM super_study.participants_temp WHERE ppt_id=?) pd ON a.option_nm=pd.partner_daily_pain" +
 				" WHERE a.field_nm = 'partner_daily_pain';" + 
-			" SELECT a.*, case when pl.partner_pain_length IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" + //12
+			" SELECT a.*, case when pl.partner_pain_level IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" + //12
 				" LEFT JOIN (SELECT partner_pain_level FROM super_study.participants_temp WHERE ppt_id=?) pl ON a.option_nm=pl.partner_pain_level" +
 				" WHERE a.field_nm = 'partner_pain_level';" +
 			" SELECT a.*, case when part_pi.partner_pain_interference IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" + //13
