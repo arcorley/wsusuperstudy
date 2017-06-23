@@ -72,7 +72,7 @@ function updateReturning(){
 	var ppt_first_nm = document.getElementById("ppt_first_nm").value;
 	var ppt_last_nm = document.getElementById("ppt_last_nm").value;
 	var partner_daily_pain = document.getElementById("partner_daily_pain").value;
-	var partner_pain_length = document.getElementById("partner_pain_length_mos").value + (document.getElementById("partner_pain_length_yrs").value * 12);
+	var partner_pain_length = (document.getElementById("partner_pain_length_mos").value * 1) + (document.getElementById("partner_pain_length_yrs").value * 12);
 	var partner_pain_location = document.getElementById("partner_pain_location").value;	
 	var partner_pain_level = document.getElementById("partner_pain_level").value;
 	var partner_pain_interference = document.getElementById("partner_pain_interference").value;	
