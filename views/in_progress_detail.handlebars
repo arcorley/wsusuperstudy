@@ -26,13 +26,12 @@ fieldset{
 <h2 style="color: #0c5449; padding-left: 10px; text-align: center;">In Progress Participant Update Form </h2> </br></br>
 
 <div class="container-fluid">
-{{#each ppt_results}}
 	<form class="form-horizontal">
 		<div class="form-group">
 			<div class="col-sm-3"></div>
 			<label for="ppt_first_nm" style="color: #0c5449;" class="control-label col-sm-2">First Name:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="ppt_first_nm" value="{{this.ppt_first_nm}}">
+				<input type="text" class="form-control" id="ppt_first_nm" value="{{ppt_results.0.ppt_first_nm}}">
 			</div>
 		</div>
 	
@@ -40,7 +39,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_last_nm" style="color: #0c5449;" class="control-label col-sm-2">Last Name:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="ppt_last_nm" value="{{this.ppt_last_nm}}">
+				<input type="text" class="form-control" id="ppt_last_nm" value="{{ppt_results.0.ppt_last_nm}}">
 			</div>
 		</div>
 	
@@ -48,7 +47,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_cell_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Cell Phone Number:</label>
 			<div class="col-sm-2">
-				<input type="tel" class="form-control" id="ppt_cell_phone_no" value="{{this.ppt_cell_phone_no}}">
+				<input type="tel" class="form-control" id="ppt_cell_phone_no" value="{{ppt_results.0.ppt_cell_phone_no}}">
 			</div>
 		</div>
 
@@ -56,7 +55,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_home_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Home Phone Number:</label>
 			<div class="col-sm-2">
-				<input type="tel" class="form-control" id="ppt_home_phone_no" value="{{this.ppt_home_phone_no}}">
+				<input type="tel" class="form-control" id="ppt_home_phone_no" value="{{ppt_results.0.ppt_home_phone_no}}">
 			</div>
 		</div>
 
@@ -64,7 +63,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_email" style="color: #0c5449;" class="control-label col-sm-2">Email Address:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="ppt_email" value="{{this.ppt_email}}">
+				<input type="text" class="form-control" id="ppt_email" value="{{ppt_results.0.ppt_email}}">
 			</div>
 		</div>		
 
@@ -72,7 +71,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="addr_line_1" style="color: #0c5449;" class="control-label col-sm-2">Address Line 1:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="addr_line_1" value="{{this.addr_line_1}}">
+				<input type="text" class="form-control" id="addr_line_1" value="{{ppt_results.0.addr_line_1}}">
 			</div>
 		</div>
 
@@ -80,7 +79,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="addr_line_2" style="color: #0c5449;" class="control-label col-sm-2">Address Line 2:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="addr_line_2" value="{{this.addr_line_2}}">
+				<input type="text" class="form-control" id="addr_line_2" value="{{ppt_results.0.addr_line_2}}">
 			</div>
 		</div>
 
@@ -88,7 +87,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="addr_city" style="color: #0c5449;" class="control-label col-sm-2">City:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="addr_city" value="{{this.addr_city}}">
+				<input type="text" class="form-control" id="addr_city" value="{{ppt_results.0.addr_city}}">
 			</div>
 		</div>
 
@@ -96,7 +95,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="addr_state" style="color: #0c5449;" class="control-label col-sm-2">State:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="addr_state" value="{{this.addr_state}}">
+				<input type="text" class="form-control" id="addr_state" value="{{ppt_results.0.addr_state}}">
 			</div>
 		</div>
 
@@ -104,7 +103,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="addr_zip" style="color: #0c5449;" class="control-label col-sm-2">ZIP Code:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="addr_zip" value="{{this.addr_zip}}">
+				<input type="number" class="form-control" id="addr_zip" value="{{ppt_results.0.addr_zip}}">
 			</div>
 		</div>	
 
@@ -113,9 +112,18 @@ fieldset{
 			<label for="referred_by" style="color: #0c5449;" class="control-label col-sm-2">How did you hear about the study?</label>
 			<div class="col-sm-2">
 				<select id="referred_by" class="form-control">
-				{{#each referred_by}}
-					<option value="{{this.option_nm}}" {{this.selected}}>{{this.option_text}}</option>
-				{{/each}}
+					<option value="{{referred_by_options.0.option_nm}}" {{referred_by_options.0.selected}} > {{referred_by_options.0.option_text}} </option>
+					<option value="{{referred_by_options.1.option_nm}}" {{referred_by_options.1.selected}} > {{referred_by_options.1.option_text}} </option>
+					<option value="{{referred_by_options.2.option_nm}}" {{referred_by_options.2.selected}} > {{referred_by_options.2.option_text}} </option>
+					<option value="{{referred_by_options.3.option_nm}}" {{referred_by_options.3.selected}} > {{referred_by_options.3.option_text}} </option>
+					<option value="{{referred_by_options.4.option_nm}}" {{referred_by_options.4.selected}} > {{referred_by_options.4.option_text}} </option>
+					<option value="{{referred_by_options.5.option_nm}}" {{referred_by_options.5.selected}} > {{referred_by_options.5.option_text}} </option>
+					<option value="{{referred_by_options.6.option_nm}}" {{referred_by_options.6.selected}} > {{referred_by_options.6.option_text}} </option>
+					<option value="{{referred_by_options.7.option_nm}}" {{referred_by_options.7.selected}} > {{referred_by_options.7.option_text}} </option>
+					<option value="{{referred_by_options.8.option_nm}}" {{referred_by_options.8.selected}} > {{referred_by_options.8.option_text}} </option>
+					<option value="{{referred_by_options.9.option_nm}}" {{referred_by_options.9.selected}} > {{referred_by_options.9.option_text}} </option>
+					<option value="{{referred_by_options.10.option_nm}}" {{referred_by_options.10.selected}} > {{referred_by_options.10.option_text}} </option>
+					<option value="{{referred_by_options.11.option_nm}}" {{referred_by_options.11.selected}} > {{referred_by_options.11.option_text}} </option>
 				</select>
 			</div>
 		</div>
@@ -124,7 +132,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="referred_by_other" style="color: #0c5449;" class="control-label col-sm-2">If Other, how did you hear about the study?</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="referred_by_other" value="{{this.referred_by_other}}">
+				<input type="text" class="form-control" id="referred_by_other" value="{{ppt_results.0.referred_by_other}}">
 			</div>
 		</div>
 
@@ -133,8 +141,8 @@ fieldset{
 			<label for="future_contact" style="color: #0c5449;" class="control-label col-sm-2">Would you like to be contacted for future studies?</label>
 			<div class="col-sm-2">
 				<select id="future_contact" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{future_contact.0.option_nm}}" {{future_contact.0.selected}} > {{future_contact.0.option_text}} </option>
+					<option value="{{future_contact.1.option_nm}}" {{future_contact.1.selected}} > {{future_contact.1.option_text}} </option>
 				</select>
 			</div>
 		</div>	
@@ -144,9 +152,9 @@ fieldset{
 			<label for="future_contact_method" style="color: #0c5449;" class="control-label col-sm-2">If yes, how would you like to be contacted?</label>
 			<div class="col-sm-2">
 				<select id="future_contact_method" class="form-control">
-					<option value="email">Email</option>
-					<option value="phone">Phone</option>
-					<option value="mail">Mail</option>
+					<option value="{{future_contact_method.0.option_nm}}" {{future_contact_method.0.selected}} > {{future_contact_method.0.option_text}} </option>
+					<option value="{{future_contact_method.1.option_nm}}" {{future_contact_method.1.selected}} > {{future_contact_method.1.option_text}} </option>
+					<option value="{{future_contact_method.2.option_nm}}" {{future_contact_method.2.selected}} > {{future_contact_method.2.option_text}} </option>
 				</select>
 			</div>
 		</div>		
@@ -156,8 +164,8 @@ fieldset{
 			<label for="partner_interest" style="color: #0c5449;" class="control-label col-sm-2">Is your partner willing to participate in the study?</label>
 			<div class="col-sm-2">
 				<select id="partner_interest" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{partner_interest.0.option_nm}}" {{partner_interest.0.selected}} > {{partner_interest.0.option_text}} </option>
+					<option value="{{partner_interest.1.option_nm}}" {{partner_interest.1.selected}} > {{partner_interest.1.option_text}} </option>
 				</select>
 			</div>
 		</div>		
@@ -166,7 +174,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_first_nm" style="color: #0c5449;" class="control-label col-sm-2">Partner First Name:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="partner_first_nm" value="{{this.partner_first_nm}}">
+				<input type="text" class="form-control" id="partner_first_nm" value="{{ppt_results.0.partner_first_nm}}">
 			</div>
 		</div>
 	
@@ -174,7 +182,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_last_nm" style="color: #0c5449;" class="control-label col-sm-2">Partner Last Name:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="partner_last_nm" value="{{this.partner_last_nm}}">
+				<input type="text" class="form-control" id="partner_last_nm" value="{{ppt_results.0.partner_last_nm}}">
 			</div>
 		</div>	
 
@@ -182,7 +190,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_cell_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Partner Cell Phone Number:</label>
 			<div class="col-sm-2">
-				<input type="tel" class="form-control" id="partner_cell_phone_no" value="{{this.partner_cell_phone_no}}">
+				<input type="tel" class="form-control" id="partner_cell_phone_no" value="{{ppt_results.0.partner_cell_phone_no}}">
 			</div>
 		</div>	
 
@@ -190,7 +198,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_home_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Partner Home Phone Number:</label>
 			<div class="col-sm-2">
-				<input type="tel" class="form-control" id="partner_home_phone_no" value="{{this.partner_home_phone_no}}">
+				<input type="tel" class="form-control" id="partner_home_phone_no" value="{{ppt_results.0.partner_home_phone_no}}">
 			</div>
 		</div>			
 
@@ -198,7 +206,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_email" style="color: #0c5449;" class="control-label col-sm-2">Partner Email Address:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="partner_email" value="{{this.partner_email}}">
+				<input type="text" class="form-control" id="partner_email" value="{{ppt_results.0.partner_email}}">
 			</div>
 		</div>
 
@@ -207,8 +215,8 @@ fieldset{
 			<label for="english_check" style="color: #0c5449;" class="control-label col-sm-2">Can both you and your romantic partner speak, read, and write in English?</label>
 			<div class="col-sm-2">
 				<select id="english_check" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{english_check.0.option_nm}}" {{english_check.0.selected}} > {{english_check.0.option_text}} </option>
+					<option value="{{english_check.1.option_nm}}" {{english_check.1.selected}} > {{english_check.1.option_text}} </option>
 				</select>
 			</div>
 		</div>				
@@ -217,7 +225,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_age" style="color: #0c5449;" class="control-label col-sm-2">Your Age:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="ppt_age" value="{{this.ppt_age}}">
+				<input type="number" class="form-control" id="ppt_age" value="{{ppt_results.0.ppt_age}}">
 			</div>
 		</div>
 
@@ -225,7 +233,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_age" style="color: #0c5449;" class="control-label col-sm-2">Partner's Age:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="partner_age" value="{{this.partner_age}}">
+				<input type="number" class="form-control" id="partner_age" value="{{ppt_results.0.partner_age}}">
 			</div>
 		</div>	
 
@@ -234,8 +242,8 @@ fieldset{
 			<label for="married_flag" style="color: #0c5449;" class="control-label col-sm-2">Are you married?</label>
 			<div class="col-sm-2">
 				<select id="married_flag" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{married_flag.0.option_nm}}" {{married_flag.0.selected}} > {{married_flag.0.option_text}} </option>
+					<option value="{{married_flag.1.option_nm}}" {{married_flag.1.selected}} > {{married_flag.1.option_text}} </option>
 				</select>
 			</div>
 		</div>	</br>
@@ -249,7 +257,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="rel_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="rel_length_yrs">
+				<input type="number" class="form-control" id="rel_length_yrs" value="{{ppt_results.rel_length_yrs}}">
 			</div>
 		</div>
 
@@ -257,7 +265,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="rel_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="rel_length_mos">
+				<input type="number" class="form-control" id="rel_length_mos" value="{{ppt_results.rel_length_mos}}">
 			</div>
 		</div> <br>
 
@@ -266,8 +274,8 @@ fieldset{
 			<label for="living_together" style="color: #0c5449;" class="control-label col-sm-2">Are you living together?</label>
 			<div class="col-sm-2">
 				<select id="living_together" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{living_together.0.option_nm}}" {{living_together.0.selected}} > {{living_together.0.option_text}} </option>
+					<option value="{{living_together.1.option_nm}}" {{living_together.1.selected}} > {{living_together.1.option_text}} </option>
 				</select>
 			</div>
 		</div> <br>
@@ -298,8 +306,8 @@ fieldset{
 			<label for="ppt_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Do you have any pain that occurs nearly every day?</label>
 			<div class="col-sm-2">
 				<select id="ppt_daily_pain" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{ppt_daily_pain.0.option_nm}}" {{ppt_daily_pain.0.selected}} > {{ppt_daily_pain.0.option_text}} </option>
+					<option value="{{ppt_daily_pain.1.option_nm}}" {{ppt_daily_pain.1.selected}} > {{ppt_daily_pain.1.option_text}} </option>
 				</select>
 			</div>
 		</div> <br>
@@ -329,7 +337,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_pain_location" style="color:#0c5449;" class="control-label col-sm-2">Where is your pain located?</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="ppt_pain_location">
+				<input type="text" class="form-control" id="ppt_pain_location" value="{{ppt_results.0.ppt_pain_location}}">
 			</div>
 		</div>	
 
@@ -338,17 +346,16 @@ fieldset{
 			<label for="ppt_pain_level" style="color: #0c5449;" class="control-label col-sm-2">On a scale from 0 (no pain) to 10 (pain as bad as you can imagine), what number best describes your chronic pain intensity on average?</label>
 			<div class="col-sm-1">
 				<select id="ppt_pain_level" class="form-control">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
+					<option value="{{ppt_pain_level.0.option_nm}}" {{ppt_pain_level.0.selected}} > {{ppt_pain_level.0.option_text}} </option>
+					<option value="{{ppt_pain_level.1.option_nm}}" {{ppt_pain_level.1.selected}} > {{ppt_pain_level.1.option_text}} </option>
+					<option value="{{ppt_pain_level.2.option_nm}}" {{ppt_pain_level.2.selected}} > {{ppt_pain_level.2.option_text}} </option>
+					<option value="{{ppt_pain_level.3.option_nm}}" {{ppt_pain_level.3.selected}} > {{ppt_pain_level.3.option_text}} </option>
+					<option value="{{ppt_pain_level.4.option_nm}}" {{ppt_pain_level.4.selected}} > {{ppt_pain_level.4.option_text}} </option>
+					<option value="{{ppt_pain_level.5.option_nm}}" {{ppt_pain_level.5.selected}} > {{ppt_pain_level.5.option_text}} </option>
+					<option value="{{ppt_pain_level.6.option_nm}}" {{ppt_pain_level.6.selected}} > {{ppt_pain_level.6.option_text}} </option>
+					<option value="{{ppt_pain_level.7.option_nm}}" {{ppt_pain_level.7.selected}} > {{ppt_pain_level.7.option_text}} </option>
+					<option value="{{ppt_pain_level.8.option_nm}}" {{ppt_pain_level.8.selected}} > {{ppt_pain_level.8.option_text}} </option>
+					<option value="{{ppt_pain_level.9.option_nm}}" {{ppt_pain_level.9.selected}} > {{ppt_pain_level.9.option_text}} </option>
 				</select>
 			</div>
 		</div>	<br>
@@ -358,17 +365,16 @@ fieldset{
 			<label for="ppt_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">On a scale from 0 (pain does not interfere at all) to 10 (pain completely interferes), how much does pain interfere with your general activity on average?</label>
 			<div class="col-sm-1">
 				<select id="ppt_pain_interference" class="form-control">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
+					<option value="{{ppt_pain_interference.0.option_nm}}" {{ppt_pain_interference.0.selected}} > {{ppt_pain_interference.0.option_text}} </option>
+					<option value="{{ppt_pain_interference.1.option_nm}}" {{ppt_pain_interference.1.selected}} > {{ppt_pain_interference.1.option_text}} </option>
+					<option value="{{ppt_pain_interference.2.option_nm}}" {{ppt_pain_interference.2.selected}} > {{ppt_pain_interference.2.option_text}} </option>
+					<option value="{{ppt_pain_interference.3.option_nm}}" {{ppt_pain_interference.3.selected}} > {{ppt_pain_interference.3.option_text}} </option>
+					<option value="{{ppt_pain_interference.4.option_nm}}" {{ppt_pain_interference.4.selected}} > {{ppt_pain_interference.4.option_text}} </option>
+					<option value="{{ppt_pain_interference.5.option_nm}}" {{ppt_pain_interference.5.selected}} > {{ppt_pain_interference.5.option_text}} </option>
+					<option value="{{ppt_pain_interference.6.option_nm}}" {{ppt_pain_interference.6.selected}} > {{ppt_pain_interference.6.option_text}} </option>
+					<option value="{{ppt_pain_interference.7.option_nm}}" {{ppt_pain_interference.7.selected}} > {{ppt_pain_interference.7.option_text}} </option>
+					<option value="{{ppt_pain_interference.8.option_nm}}" {{ppt_pain_interference.8.selected}} > {{ppt_pain_interference.8.option_text}} </option>
+					<option value="{{ppt_pain_interference.9.option_nm}}" {{ppt_pain_interference.9.selected}} > {{ppt_pain_interference.9.option_text}} </option>
 				</select>
 			</div>
 		</div>	<br>	
@@ -378,8 +384,8 @@ fieldset{
 			<label for="partner_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Does your romantic partner have any pain that occurs nearly every day?</label>
 			<div class="col-sm-2">
 				<select id="partner_daily_pain" class="form-control">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="{{partner_daily_pain.0.option_nm}}" {{partner_daily_pain.0.selected}} > {{partner_daily_pain.0.option_text}} </option>
+					<option value="{{partner_daily_pain.1.option_nm}}" {{partner_daily_pain.1.selected}} > {{partner_daily_pain.1.option_text}} </option>
 				</select>
 			</div>
 		</div> <br>
@@ -392,7 +398,6 @@ fieldset{
 		</div>
 
 	</form>
-{{/each}}
 </div>
 
 </body>
