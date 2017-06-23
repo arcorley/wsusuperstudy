@@ -23,11 +23,11 @@ function addNew(){
 	var ppt_age = document.getElementById("ppt_age").value;
 	var partner_age = document.getElementById("partner_age").value;
 	var married_flag = document.getElementById("married_flag").value;
-	var rel_length = document.getElementById("rel_length_mos").value + (document.getElementById("rel_length_yrs").value * 12);
+	var rel_length = (document.getElementById("rel_length_mos").value * 1) + (document.getElementById("rel_length_yrs").value * 12);
 	var living_together = document.getElementById("living_together").value;
-	var living_together_length = document.getElementById("living_together_yrs").value + (document.getElementById("living_together_mos").value * 12);
+	var living_together_length = (document.getElementById("living_together_yrs").value * 1) + (document.getElementById("living_together_mos").value * 12);
 	var ppt_daily_pain = document.getElementById("ppt_daily_pain").value;
-	var ppt_pain_length = document.getElementById("ppt_pain_length_mos").value + (document.getElementById("ppt_pain_length_yrs").value * 12);
+	var ppt_pain_length = (document.getElementById("ppt_pain_length_mos").value * 1) + (document.getElementById("ppt_pain_length_yrs").value * 12);
 	var ppt_pain_location = document.getElementById("ppt_pain_location").value;
 	var ppt_pain_level = document.getElementById("ppt_pain_level").value;
 	var ppt_pain_interference = document.getElementById("ppt_pain_interference").value;
