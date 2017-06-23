@@ -275,12 +275,14 @@ app.get('/in_progress_detail', function(req, res, next){
 					next(err);
 					return;
 				}
-				rows[0].rel_length_yrs = Math.round(rows[0].rel_length/12);
-				rows[0].rel_length_mos = Math.round(rows[0].rel_length%12);
+				rows[0].rel_length_yrs = Math.round(((rows[0][0].rel_length)/12));
+				rows[0].rel_length_mos = Math.round(rows[0][0].rel_length%12);
+				rows[0].living_together_yrs = Math.round(rows[0][0].living_together_length/12);
+				rows[0].living_together_mos = Math.round(rows[0][0].living_together_length%12);
+				rows[0].ppt_pain_yrs = Math.round(rows[0][0].ppt_pain_length/12);
+				rows[0].ppt_pain_mos = Math.round(rows[0][0].ppt_pain_length%12);
 				context.ppt_results = rows[0];
-				console.log(rows[0]);
-				context.referred_by = rows[1];
-				console.log(context.referred_by);
+				context.referred_by_options = rows[1];
 				context.future_contact = rows[2];
 				context.future_contact_method = rows[3];
 				context.partner_interest = rows[4];
