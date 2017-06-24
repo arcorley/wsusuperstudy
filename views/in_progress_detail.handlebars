@@ -225,7 +225,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_age" style="color: #0c5449;" class="control-label col-sm-2">Participant Age:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="ppt_age" value="{{ppt_results.0.ppt_age}}">
+				<input type="number" class="form-control eligibility_field" id="ppt_age" value="{{ppt_results.0.ppt_age}}">
 			</div>
 		</div>
 
@@ -233,7 +233,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_age" style="color: #0c5449;" class="control-label col-sm-2">Partner Age:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="partner_age" value="{{ppt_results.0.partner_age}}">
+				<input type="number" class="form-control eligibility_field" id="partner_age" value="{{ppt_results.0.partner_age}}">
 			</div>
 		</div>	
 
@@ -241,7 +241,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="married_flag" style="color: #0c5449;" class="control-label col-sm-2">Is the couple married?</label>
 			<div class="col-sm-2">
-				<select id="married_flag" class="form-control">
+				<select id="married_flag" class="form-control eligibility_field">
 					<option value="{{married_flag.0.option_nm}}" {{married_flag.0.selected}} > {{married_flag.0.option_text}} </option>
 					<option value="{{married_flag.1.option_nm}}" {{married_flag.1.selected}} > {{married_flag.1.option_text}} </option>
 				</select>
@@ -257,7 +257,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="rel_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="rel_length_yrs" value="{{ppt_results.rel_length_yrs}}">
+				<input type="number" class="form-control eligibility_field" id="rel_length_yrs" value="{{ppt_results.rel_length_yrs}}">
 			</div>
 		</div>
 
@@ -265,7 +265,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="rel_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="rel_length_mos" value="{{ppt_results.rel_length_mos}}">
+				<input type="number" class="form-control eligibility_field" id="rel_length_mos " value="{{ppt_results.rel_length_mos}}">
 			</div>
 		</div> <br>
 
@@ -273,7 +273,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="living_together" style="color: #0c5449;" class="control-label col-sm-2">Is the couple living together?</label>
 			<div class="col-sm-2">
-				<select id="living_together" class="form-control">
+				<select id="living_together" class="form-control eligibility_field">
 					<option value="{{living_together.0.option_nm}}" {{living_together.0.selected}} > {{living_together.0.option_text}} </option>
 					<option value="{{living_together.1.option_nm}}" {{living_together.1.selected}} > {{living_together.1.option_text}} </option>
 				</select>
@@ -305,7 +305,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Participant Daily Pain?</label>
 			<div class="col-sm-2">
-				<select id="ppt_daily_pain" class="form-control">
+				<select id="ppt_daily_pain" class="form-control eligibility_field">
 					<option value="{{ppt_daily_pain.0.option_nm}}" {{ppt_daily_pain.0.selected}} > {{ppt_daily_pain.0.option_text}} </option>
 					<option value="{{ppt_daily_pain.1.option_nm}}" {{ppt_daily_pain.1.selected}} > {{ppt_daily_pain.1.option_text}} </option>
 				</select>
@@ -321,7 +321,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_pain_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="ppt_pain_length_yrs" value="{{ppt_results.ppt_pain_yrs}}">
+				<input type="number" class="form-control eligibility_field" id="ppt_pain_length_yrs" value="{{ppt_results.ppt_pain_yrs}}">
 			</div>
 		</div>
 
@@ -329,7 +329,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_pain_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="ppt_pain_length_mos" value="{{ppt_results.ppt_pain_mos}}">
+				<input type="number" class="form-control eligibility_field" id="ppt_pain_length_mos" value="{{ppt_results.ppt_pain_mos}}">
 			</div>
 		</div> <br>	
 
@@ -345,7 +345,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_pain_level" style="color: #0c5449;" class="control-label col-sm-2">Participant Pain Level:</label>
 			<div class="col-sm-1">
-				<select id="ppt_pain_level" class="form-control">
+				<select id="ppt_pain_level" class="form-control eligibility_field">
 					<option value="{{ppt_pain_level.0.option_nm}}" {{ppt_pain_level.0.selected}} > {{ppt_pain_level.0.option_text}} </option>
 					<option value="{{ppt_pain_level.1.option_nm}}" {{ppt_pain_level.1.selected}} > {{ppt_pain_level.1.option_text}} </option>
 					<option value="{{ppt_pain_level.2.option_nm}}" {{ppt_pain_level.2.selected}} > {{ppt_pain_level.2.option_text}} </option>
@@ -365,7 +365,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">Participant Pain Interference:</label>
 			<div class="col-sm-1">
-				<select id="ppt_pain_interference" class="form-control">
+				<select id="ppt_pain_interference" class="form-control eligibility_field">
 					<option value="{{ppt_pain_interference.0.option_nm}}" {{ppt_pain_interference.0.selected}} > {{ppt_pain_interference.0.option_text}} </option>
 					<option value="{{ppt_pain_interference.1.option_nm}}" {{ppt_pain_interference.1.selected}} > {{ppt_pain_interference.1.option_text}} </option>
 					<option value="{{ppt_pain_interference.2.option_nm}}" {{ppt_pain_interference.2.selected}} > {{ppt_pain_interference.2.option_text}} </option>
@@ -385,7 +385,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ppt_pain_type" style="color: #0c5449;" class="control-label col-sm-2">Participant Pain Type:</label>
 			<div class="col-sm-1">
-				<select id="ppt_pain_type" class="form-control">
+				<select id="ppt_pain_type" class="form-control eligibility_field">
 					<option value="{{ppt_pain_type.0.option_nm}}" {{ppt_pain_type.0.selected}} > {{ppt_pain_type.0.option_text}} </option>
 					<option value="{{ppt_pain_type.1.option_nm}}" {{ppt_pain_type.1.selected}} > {{ppt_pain_type.1.option_text}} </option>
 					<option value="{{ppt_pain_type.2.option_nm}}" {{ppt_pain_type.2.selected}} > {{ppt_pain_type.2.option_text}} </option>
@@ -398,7 +398,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Partner Daily Pain:</label>
 			<div class="col-sm-2">
-				<select id="partner_daily_pain" class="form-control">
+				<select id="partner_daily_pain" class="form-control eligibility_field">
 					<option value="{{partner_daily_pain.0.option_nm}}" {{partner_daily_pain.0.selected}} > {{partner_daily_pain.0.option_text}} </option>
 					<option value="{{partner_daily_pain.1.option_nm}}" {{partner_daily_pain.1.selected}} > {{partner_daily_pain.1.option_text}} </option>
 				</select>
@@ -414,7 +414,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="partner_pain_length_yrs" value="{{ppt_results.partner_pain_yrs}}">
+				<input type="number" class="form-control eligibility_field" id="partner_pain_length_yrs" value="{{ppt_results.partner_pain_yrs}}">
 			</div>
 		</div>
 
@@ -422,7 +422,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="partner_pain_length_mos" value="{{ppt_results.partner_pain_mos}}">
+				<input type="number" class="form-control eligibility_field" id="partner_pain_length_mos" value="{{ppt_results.partner_pain_mos}}">
 			</div>
 		</div> <br>	
 
@@ -438,7 +438,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_level" style="color: #0c5449;" class="control-label col-sm-2">Partner Pain Level:</label>
 			<div class="col-sm-1">
-				<select id="partner_pain_level" class="form-control">
+				<select id="partner_pain_level" class="form-control eligibility_field">
 					<option value="{{partner_pain_level.0.option_nm}}" {{partner_pain_level.0.selected}} > {{partner_pain_level.0.option_text}} </option>
 					<option value="{{partner_pain_level.1.option_nm}}" {{partner_pain_level.1.selected}} > {{partner_pain_level.1.option_text}} </option>
 					<option value="{{partner_pain_level.2.option_nm}}" {{partner_pain_level.2.selected}} > {{partner_pain_level.2.option_text}} </option>
@@ -458,7 +458,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">Partner Pain Interference:</label>
 			<div class="col-sm-1">
-				<select id="partner_pain_interference" class="form-control">
+				<select id="partner_pain_interference" class="form-control eligibility_field">
 					<option value="{{partner_pain_interference.0.option_nm}}" {{partner_pain_interference.0.selected}} > {{partner_pain_interference.0.option_text}} </option>
 					<option value="{{partner_pain_interference.1.option_nm}}" {{partner_pain_interference.1.selected}} > {{partner_pain_interference.1.option_text}} </option>
 					<option value="{{partner_pain_interference.2.option_nm}}" {{partner_pain_interference.2.selected}} > {{partner_pain_interference.2.option_text}} </option>
@@ -478,7 +478,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_type" style="color: #0c5449;" class="control-label col-sm-2">Partner Pain Type:</label>
 			<div class="col-sm-1">
-				<select id="partner_pain_type" class="form-control">
+				<select id="partner_pain_type" class="form-control eligibility_field">
 					<option value="{{partner_pain_type.0.option_nm}}" {{partner_pain_type.0.selected}} > {{partner_pain_type.0.option_text}} </option>
 					<option value="{{partner_pain_type.1.option_nm}}" {{partner_pain_type.1.selected}} > {{partner_pain_type.1.option_text}} </option>
 					<option value="{{partner_pain_type.2.option_nm}}" {{partner_pain_type.2.selected}} > {{partner_pain_type.2.option_text}} </option>
