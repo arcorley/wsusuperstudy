@@ -25,7 +25,9 @@ fieldset{
 <body>
 <h2 style="color: #0c5449; padding-left: 10px; text-align: center;">In Progress Participant Update Form: PPT ID# {{ppt_results.0.ppt_id}} </h2> </br></br>
 
-<div id="ppt_id" style="display:none;" value="{{ppt_results.0.ppt_id}}"></div>
+<div style="display:none;">
+	<input type="number" class="form-control" id="ppt_id" value="{{ppt_results.0.ppt_id}}">
+</div>
 
 <div class="container-fluid">
 	<form class="form-horizontal">
@@ -267,7 +269,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="rel_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control eligibility_field" id="rel_length_mos " value="{{ppt_results.rel_length_mos}}">
+				<input type="number" class="form-control eligibility_field" id="rel_length_mos" value="{{ppt_results.rel_length_mos}}">
 			</div>
 		</div> <br>
 
@@ -579,7 +581,7 @@ fieldset{
 		<div class="formgroup">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-4">
-				<button type="button" id="submitNew" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary center-block" onclick="updateInProgress()" />Submit</button><br><br> 
+				<button type="button" id="submitNew" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary center-block" onclick="updateInProgress()" />Update Participant</button><br><br> 
 			</div>
 		</div>
 
