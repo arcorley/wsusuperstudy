@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+</head>
+
+<script src="scripts/functions.js"></script>
+
+<style>
+fieldset{
+	text-align: left;
+}
+
+#referred_hidden{
+	display: none;
+}
+</style>
+
+<body>
+<h2 style="color: #0c5449; padding-left: 10px; text-align: center;">In Progress Participant Update Form: PPT ID# {{ppt_results.0.ppt_id}} </h2> </br></br>
+
+<div style="display:none;">
+	<input type="number" class="form-control" id="ppt_id" value="{{ppt_results.0.ppt_id}}">
+</div>
+
+<div class="container-fluid">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_first_nm" style="color: #0c5449;" class="control-label col-sm-2">Participant First Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_first_nm" value="{{ppt_results.0.ppt_first_nm}}">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_last_nm" style="color: #0c5449;" class="control-label col-sm-2">Participant Last Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_last_nm" value="{{ppt_results.0.ppt_last_nm}}">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_cell_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Participant Cell Phone Number:</label>
+			<div class="col-sm-2">
+				<input type="tel" class="form-control" id="ppt_cell_phone_no" value="{{ppt_results.0.ppt_cell_phone_no}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_home_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Participant Home Phone Number:</label>
+			<div class="col-sm-2">
+				<input type="tel" class="form-control" id="ppt_home_phone_no" value="{{ppt_results.0.ppt_home_phone_no}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_email" style="color: #0c5449;" class="control-label col-sm-2">Participant Email Address:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_email" value="{{ppt_results.0.ppt_email}}">
+			</div>
+		</div>		
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_line_1" style="color: #0c5449;" class="control-label col-sm-2">Address Line 1:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_line_1" value="{{ppt_results.0.addr_line_1}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_line_2" style="color: #0c5449;" class="control-label col-sm-2">Address Line 2:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_line_2" value="{{ppt_results.0.addr_line_2}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_city" style="color: #0c5449;" class="control-label col-sm-2">City:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_city" value="{{ppt_results.0.addr_city}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_state" style="color: #0c5449;" class="control-label col-sm-2">State:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="addr_state" value="{{ppt_results.0.addr_state}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="addr_zip" style="color: #0c5449;" class="control-label col-sm-2">ZIP Code:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="addr_zip" value="{{ppt_results.0.addr_zip}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="referred_by" style="color: #0c5449;" class="control-label col-sm-2">Referred by:</label>
+			<div class="col-sm-2">
+				<select id="referred_by" class="form-control">
+					<option value="{{referred_by_options.0.option_nm}}" {{referred_by_options.0.selected}} > {{referred_by_options.0.option_text}} </option>
+					<option value="{{referred_by_options.1.option_nm}}" {{referred_by_options.1.selected}} > {{referred_by_options.1.option_text}} </option>
+					<option value="{{referred_by_options.2.option_nm}}" {{referred_by_options.2.selected}} > {{referred_by_options.2.option_text}} </option>
+					<option value="{{referred_by_options.3.option_nm}}" {{referred_by_options.3.selected}} > {{referred_by_options.3.option_text}} </option>
+					<option value="{{referred_by_options.4.option_nm}}" {{referred_by_options.4.selected}} > {{referred_by_options.4.option_text}} </option>
+					<option value="{{referred_by_options.5.option_nm}}" {{referred_by_options.5.selected}} > {{referred_by_options.5.option_text}} </option>
+					<option value="{{referred_by_options.6.option_nm}}" {{referred_by_options.6.selected}} > {{referred_by_options.6.option_text}} </option>
+					<option value="{{referred_by_options.7.option_nm}}" {{referred_by_options.7.selected}} > {{referred_by_options.7.option_text}} </option>
+					<option value="{{referred_by_options.8.option_nm}}" {{referred_by_options.8.selected}} > {{referred_by_options.8.option_text}} </option>
+					<option value="{{referred_by_options.9.option_nm}}" {{referred_by_options.9.selected}} > {{referred_by_options.9.option_text}} </option>
+					<option value="{{referred_by_options.10.option_nm}}" {{referred_by_options.10.selected}} > {{referred_by_options.10.option_text}} </option>
+					<option value="{{referred_by_options.11.option_nm}}" {{referred_by_options.11.selected}} > {{referred_by_options.11.option_text}} </option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group" id="referred_hidden">
+			<div class="col-sm-3"></div>
+			<label for="referred_by_other" style="color: #0c5449;" class="control-label col-sm-2">Other Referral:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="referred_by_other" value="{{ppt_results.0.referred_by_other}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="future_contact" style="color: #0c5449;" class="control-label col-sm-2">Future Contact?</label>
+			<div class="col-sm-2">
+				<select id="future_contact" class="form-control">
+					<option value="{{future_contact.0.option_nm}}" {{future_contact.0.selected}} > {{future_contact.0.option_text}} </option>
+					<option value="{{future_contact.1.option_nm}}" {{future_contact.1.selected}} > {{future_contact.1.option_text}} </option>
+				</select>
+			</div>
+		</div>	
+
+		<div class="form-group" id="future_contact_hidden">
+			<div class="col-sm-3"></div>
+			<label for="future_contact_method" style="color: #0c5449;" class="control-label col-sm-2">Future Contact Method</label>
+			<div class="col-sm-2">
+				<select id="future_contact_method" class="form-control">
+					<option value="{{future_contact_method.0.option_nm}}" {{future_contact_method.0.selected}} > {{future_contact_method.0.option_text}} </option>
+					<option value="{{future_contact_method.1.option_nm}}" {{future_contact_method.1.selected}} > {{future_contact_method.1.option_text}} </option>
+					<option value="{{future_contact_method.2.option_nm}}" {{future_contact_method.2.selected}} > {{future_contact_method.2.option_text}} </option>
+				</select>
+			</div>
+		</div>		
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_interest" style="color: #0c5449;" class="control-label col-sm-2">Partner Interest?</label>
+			<div class="col-sm-2">
+				<select id="partner_interest" class="form-control">
+					<option value="{{partner_interest.0.option_nm}}" {{partner_interest.0.selected}} > {{partner_interest.0.option_text}} </option>
+					<option value="{{partner_interest.1.option_nm}}" {{partner_interest.1.selected}} > {{partner_interest.1.option_text}} </option>
+				</select>
+			</div>
+		</div>		
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_first_nm" style="color: #0c5449;" class="control-label col-sm-2">Partner First Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_first_nm" value="{{ppt_results.0.partner_first_nm}}">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_last_nm" style="color: #0c5449;" class="control-label col-sm-2">Partner Last Name:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_last_nm" value="{{ppt_results.0.partner_last_nm}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_cell_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Partner Cell Phone Number:</label>
+			<div class="col-sm-2">
+				<input type="tel" class="form-control" id="partner_cell_phone_no" value="{{ppt_results.0.partner_cell_phone_no}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_home_phone_no" style="color: #0c5449;" class="control-label col-sm-2">Partner Home Phone Number:</label>
+			<div class="col-sm-2">
+				<input type="tel" class="form-control" id="partner_home_phone_no" value="{{ppt_results.0.partner_home_phone_no}}">
+			</div>
+		</div>			
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_email" style="color: #0c5449;" class="control-label col-sm-2">Partner Email Address:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_email" value="{{ppt_results.0.partner_email}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="english_check" style="color: #0c5449;" class="control-label col-sm-2">Can both partners speak, read, and write in English?</label>
+			<div class="col-sm-2">
+				<select id="english_check" class="form-control eligibility_field">
+					<option value="{{english_check.0.option_nm}}" {{english_check.0.selected}} > {{english_check.0.option_text}} </option>
+					<option value="{{english_check.1.option_nm}}" {{english_check.1.selected}} > {{english_check.1.option_text}} </option>
+				</select>
+			</div>
+		</div>				
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_age" style="color: #0c5449;" class="control-label col-sm-2">Participant Age:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="ppt_age" value="{{ppt_results.0.ppt_age}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_age" style="color: #0c5449;" class="control-label col-sm-2">Partner Age:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="partner_age" value="{{ppt_results.0.partner_age}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="married_flag" style="color: #0c5449;" class="control-label col-sm-2">Is the couple married?</label>
+			<div class="col-sm-2">
+				<select id="married_flag" class="form-control eligibility_field">
+					<option value="{{married_flag.0.option_nm}}" {{married_flag.0.selected}} > {{married_flag.0.option_text}} </option>
+					<option value="{{married_flag.1.option_nm}}" {{married_flag.1.selected}} > {{married_flag.1.option_text}} </option>
+				</select>
+			</div>
+		</div>	</br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label style="color:#0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-6">Relationship Length:</label>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="rel_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="rel_length_yrs" value="{{ppt_results.rel_length_yrs}}">
+			</div>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="rel_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="rel_length_mos" value="{{ppt_results.rel_length_mos}}">
+			</div>
+		</div> <br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="living_together" style="color: #0c5449;" class="control-label col-sm-2">Is the couple living together?</label>
+			<div class="col-sm-2">
+				<select id="living_together" class="form-control eligibility_field">
+					<option value="{{living_together.0.option_nm}}" {{living_together.0.selected}} > {{living_together.0.option_text}} </option>
+					<option value="{{living_together.1.option_nm}}" {{living_together.1.selected}} > {{living_together.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="form-group" id="living_together_hidden">
+			<div class="col-sm-3"></div>
+			<label style="color:#0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-6">Living together length:</label>
+		</div>
+
+		<div class="form-group" id="living_together_hidden_yrs"> 
+			<div class="col-sm-3"></div>
+			<label for="living_together_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="living_together_yrs" value="{{ppt_results.living_together_yrs}}">
+			</div>
+		</div>
+
+		<div class="form-group" id="living_together_hidden_mos"> 
+			<div class="col-sm-3"></div>
+			<label for="living_together_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="living_together_mos" value="{{ppt_results.living_together_mos}}">
+			</div>
+		</div>	<br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Participant Daily Pain?</label>
+			<div class="col-sm-2">
+				<select id="ppt_daily_pain" class="form-control eligibility_field">
+					<option value="{{ppt_daily_pain.0.option_nm}}" {{ppt_daily_pain.0.selected}} > {{ppt_daily_pain.0.option_text}} </option>
+					<option value="{{ppt_daily_pain.1.option_nm}}" {{ppt_daily_pain.1.selected}} > {{ppt_daily_pain.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label style="color: #0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-2">Participant Pain Length:</label>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="ppt_pain_length_yrs" value="{{ppt_results.ppt_pain_yrs}}">
+			</div>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="ppt_pain_length_mos" value="{{ppt_results.ppt_pain_mos}}">
+			</div>
+		</div> <br>	
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_location" style="color:#0c5449;" class="control-label col-sm-2">Participant Pain Location:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="ppt_pain_location" value="{{ppt_results.0.ppt_pain_location}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_level" style="color: #0c5449;" class="control-label col-sm-2">Participant Pain Level:</label>
+			<div class="col-sm-1">
+				<select id="ppt_pain_level" class="form-control eligibility_field">
+					<option value="{{ppt_pain_level.0.option_nm}}" {{ppt_pain_level.0.selected}} > {{ppt_pain_level.0.option_text}} </option>
+					<option value="{{ppt_pain_level.1.option_nm}}" {{ppt_pain_level.1.selected}} > {{ppt_pain_level.1.option_text}} </option>
+					<option value="{{ppt_pain_level.2.option_nm}}" {{ppt_pain_level.2.selected}} > {{ppt_pain_level.2.option_text}} </option>
+					<option value="{{ppt_pain_level.3.option_nm}}" {{ppt_pain_level.3.selected}} > {{ppt_pain_level.3.option_text}} </option>
+					<option value="{{ppt_pain_level.4.option_nm}}" {{ppt_pain_level.4.selected}} > {{ppt_pain_level.4.option_text}} </option>
+					<option value="{{ppt_pain_level.5.option_nm}}" {{ppt_pain_level.5.selected}} > {{ppt_pain_level.5.option_text}} </option>
+					<option value="{{ppt_pain_level.6.option_nm}}" {{ppt_pain_level.6.selected}} > {{ppt_pain_level.6.option_text}} </option>
+					<option value="{{ppt_pain_level.7.option_nm}}" {{ppt_pain_level.7.selected}} > {{ppt_pain_level.7.option_text}} </option>
+					<option value="{{ppt_pain_level.8.option_nm}}" {{ppt_pain_level.8.selected}} > {{ppt_pain_level.8.option_text}} </option>
+					<option value="{{ppt_pain_level.9.option_nm}}" {{ppt_pain_level.9.selected}} > {{ppt_pain_level.9.option_text}} </option>
+					<option value="{{ppt_pain_level.10.option_nm}}" {{ppt_pain_level.10.selected}} > {{ppt_pain_level.10.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">Participant Pain Interference:</label>
+			<div class="col-sm-1">
+				<select id="ppt_pain_interference" class="form-control eligibility_field">
+					<option value="{{ppt_pain_interference.0.option_nm}}" {{ppt_pain_interference.0.selected}} > {{ppt_pain_interference.0.option_text}} </option>
+					<option value="{{ppt_pain_interference.1.option_nm}}" {{ppt_pain_interference.1.selected}} > {{ppt_pain_interference.1.option_text}} </option>
+					<option value="{{ppt_pain_interference.2.option_nm}}" {{ppt_pain_interference.2.selected}} > {{ppt_pain_interference.2.option_text}} </option>
+					<option value="{{ppt_pain_interference.3.option_nm}}" {{ppt_pain_interference.3.selected}} > {{ppt_pain_interference.3.option_text}} </option>
+					<option value="{{ppt_pain_interference.4.option_nm}}" {{ppt_pain_interference.4.selected}} > {{ppt_pain_interference.4.option_text}} </option>
+					<option value="{{ppt_pain_interference.5.option_nm}}" {{ppt_pain_interference.5.selected}} > {{ppt_pain_interference.5.option_text}} </option>
+					<option value="{{ppt_pain_interference.6.option_nm}}" {{ppt_pain_interference.6.selected}} > {{ppt_pain_interference.6.option_text}} </option>
+					<option value="{{ppt_pain_interference.7.option_nm}}" {{ppt_pain_interference.7.selected}} > {{ppt_pain_interference.7.option_text}} </option>
+					<option value="{{ppt_pain_interference.8.option_nm}}" {{ppt_pain_interference.8.selected}} > {{ppt_pain_interference.8.option_text}} </option>
+					<option value="{{ppt_pain_interference.9.option_nm}}" {{ppt_pain_interference.9.selected}} > {{ppt_pain_interference.9.option_text}} </option>
+					<option value="{{ppt_pain_interference.10.option_nm}}" {{ppt_pain_interference.10.selected}} > {{ppt_pain_interference.10.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ppt_pain_type" style="color: #0c5449;" class="control-label col-sm-2">Participant Pain Type:</label>
+			<div class="col-sm-2">
+				<select id="ppt_pain_type" class="form-control eligibility_field">
+					<option value="{{ppt_pain_type.0.option_nm}}" {{ppt_pain_type.0.selected}} > {{ppt_pain_type.0.option_text}} </option>
+					<option value="{{ppt_pain_type.1.option_nm}}" {{ppt_pain_type.1.selected}} > {{ppt_pain_type.1.option_text}} </option>
+					<option value="{{ppt_pain_type.2.option_nm}}" {{ppt_pain_type.2.selected}} > {{ppt_pain_type.2.option_text}} </option>
+					<option value="{{ppt_pain_type.3.option_nm}}" {{ppt_pain_type.3.selected}} > {{ppt_pain_type.3.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>			
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Partner Daily Pain:</label>
+			<div class="col-sm-2">
+				<select id="partner_daily_pain" class="form-control eligibility_field">
+					<option value="{{partner_daily_pain.0.option_nm}}" {{partner_daily_pain.0.selected}} > {{partner_daily_pain.0.option_text}} </option>
+					<option value="{{partner_daily_pain.1.option_nm}}" {{partner_daily_pain.1.selected}} > {{partner_daily_pain.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label style="color: #0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-2">Partner Pain Length:</label>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="partner_pain_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="partner_pain_length_yrs" value="{{ppt_results.partner_pain_yrs}}">
+			</div>
+		</div>
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="partner_pain_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control eligibility_field" id="partner_pain_length_mos" value="{{ppt_results.partner_pain_mos}}">
+			</div>
+		</div> <br>	
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="partner_pain_location" style="color:#0c5449;" class="control-label col-sm-2">Partner Pain Location:</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="partner_pain_location" value="{{ppt_results.0.partner_pain_location}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_pain_level" style="color: #0c5449;" class="control-label col-sm-2">Partner Pain Level:</label>
+			<div class="col-sm-1">
+				<select id="partner_pain_level" class="form-control eligibility_field">
+					<option value="{{partner_pain_level.0.option_nm}}" {{partner_pain_level.0.selected}} > {{partner_pain_level.0.option_text}} </option>
+					<option value="{{partner_pain_level.1.option_nm}}" {{partner_pain_level.1.selected}} > {{partner_pain_level.1.option_text}} </option>
+					<option value="{{partner_pain_level.2.option_nm}}" {{partner_pain_level.2.selected}} > {{partner_pain_level.2.option_text}} </option>
+					<option value="{{partner_pain_level.3.option_nm}}" {{partner_pain_level.3.selected}} > {{partner_pain_level.3.option_text}} </option>
+					<option value="{{partner_pain_level.4.option_nm}}" {{partner_pain_level.4.selected}} > {{partner_pain_level.4.option_text}} </option>
+					<option value="{{partner_pain_level.5.option_nm}}" {{partner_pain_level.5.selected}} > {{partner_pain_level.5.option_text}} </option>
+					<option value="{{partner_pain_level.6.option_nm}}" {{partner_pain_level.6.selected}} > {{partner_pain_level.6.option_text}} </option>
+					<option value="{{partner_pain_level.7.option_nm}}" {{partner_pain_level.7.selected}} > {{partner_pain_level.7.option_text}} </option>
+					<option value="{{partner_pain_level.8.option_nm}}" {{partner_pain_level.8.selected}} > {{partner_pain_level.8.option_text}} </option>
+					<option value="{{partner_pain_level.9.option_nm}}" {{partner_pain_level.9.selected}} > {{partner_pain_level.9.option_text}} </option>
+					<option value="{{partner_pain_level.10.option_nm}}" {{partner_pain_level.10.selected}} > {{partner_pain_level.10.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">Partner Pain Interference:</label>
+			<div class="col-sm-1">
+				<select id="partner_pain_interference" class="form-control eligibility_field">
+					<option value="{{partner_pain_interference.0.option_nm}}" {{partner_pain_interference.0.selected}} > {{partner_pain_interference.0.option_text}} </option>
+					<option value="{{partner_pain_interference.1.option_nm}}" {{partner_pain_interference.1.selected}} > {{partner_pain_interference.1.option_text}} </option>
+					<option value="{{partner_pain_interference.2.option_nm}}" {{partner_pain_interference.2.selected}} > {{partner_pain_interference.2.option_text}} </option>
+					<option value="{{partner_pain_interference.3.option_nm}}" {{partner_pain_interference.3.selected}} > {{partner_pain_interference.3.option_text}} </option>
+					<option value="{{partner_pain_interference.4.option_nm}}" {{partner_pain_interference.4.selected}} > {{partner_pain_interference.4.option_text}} </option>
+					<option value="{{partner_pain_interference.5.option_nm}}" {{partner_pain_interference.5.selected}} > {{partner_pain_interference.5.option_text}} </option>
+					<option value="{{partner_pain_interference.6.option_nm}}" {{partner_pain_interference.6.selected}} > {{partner_pain_interference.6.option_text}} </option>
+					<option value="{{partner_pain_interference.7.option_nm}}" {{partner_pain_interference.7.selected}} > {{partner_pain_interference.7.option_text}} </option>
+					<option value="{{partner_pain_interference.8.option_nm}}" {{partner_pain_interference.8.selected}} > {{partner_pain_interference.8.option_text}} </option>
+					<option value="{{partner_pain_interference.9.option_nm}}" {{partner_pain_interference.9.selected}} > {{partner_pain_interference.9.option_text}} </option>
+					<option value="{{partner_pain_interference.10.option_nm}}" {{partner_pain_interference.10.selected}} > {{partner_pain_interference.10.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="partner_pain_type" style="color: #0c5449;" class="control-label col-sm-2">Partner Pain Type:</label>
+			<div class="col-sm-2">
+				<select id="partner_pain_type" class="form-control eligibility_field">
+					<option value="{{partner_pain_type.0.option_nm}}" {{partner_pain_type.0.selected}} > {{partner_pain_type.0.option_text}} </option>
+					<option value="{{partner_pain_type.1.option_nm}}" {{partner_pain_type.1.selected}} > {{partner_pain_type.1.option_text}} </option>
+					<option value="{{partner_pain_type.2.option_nm}}" {{partner_pain_type.2.selected}} > {{partner_pain_type.2.option_text}} </option>
+					<option value="{{partner_pain_type.3.option_nm}}" {{partner_pain_type.3.selected}} > {{partner_pain_type.3.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>			
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="completed_screen" style="color: #0c5449;" class="control-label col-sm-2">Completed Screen?</label>
+			<div class="col-sm-2">
+				<select id="completed_screen" class="form-control eligibility_field">
+					<option value="{{completed_screen.0.option_nm}}" {{completed_screen.0.selected}} > {{completed_screen.0.option_text}} </option>
+					<option value="{{completed_screen.1.option_nm}}" {{completed_screen.1.selected}} > {{completed_screen.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>	
+
+		<div class="form-group"> 
+			<div class="col-sm-3"></div>
+			<label for="num_contacts" style="color:#0c5449;" class="control-label col-sm-2">Number of Contacts:</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="num_contacts" value="{{ppt_results.0.num_contacts}}">
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ineligible_no_full_screen" style="color: #0c5449;" class="control-label col-sm-2">Ineligible without Full Screen?</label>
+			<div class="col-sm-2">
+				<select id="ineligible_no_full_screen" class="form-control">
+					<option value="{{ineligible_no_full_screen.0.option_nm}}" {{ineligible_no_full_screen.0.selected}} > {{ineligible_no_full_screen.0.option_text}} </option>
+					<option value="{{ineligible_no_full_screen.1.option_nm}}" {{ineligible_no_full_screen.1.selected}} > {{ineligible_no_full_screen.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>		
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="ineligible_no_full_screen_reason" style="color: #0c5449;" class="control-label col-sm-2">Reason Ineligible without Full Screen:</label>
+			<div class="col-sm-1">
+				<select id="ineligible_no_full_screen_reason" class="form-control">
+					<option value="{{ineligible_no_full_screen_reason.0.option_nm}}" {{ineligible_no_full_screen_reason.0.selected}} > {{ineligible_no_full_screen_reason.0.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.1.option_nm}}" {{ineligible_no_full_screen_reason.1.selected}} > {{ineligible_no_full_screen_reason.1.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.2.option_nm}}" {{ineligible_no_full_screen_reason.2.selected}} > {{ineligible_no_full_screen_reason.2.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.3.option_nm}}" {{ineligible_no_full_screen_reason.3.selected}} > {{ineligible_no_full_screen_reason.3.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.4.option_nm}}" {{ineligible_no_full_screen_reason.4.selected}} > {{ineligible_no_full_screen_reason.4.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.5.option_nm}}" {{ineligible_no_full_screen_reason.5.selected}} > {{ineligible_no_full_screen_reason.5.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.6.option_nm}}" {{ineligible_no_full_screen_reason.6.selected}} > {{ineligible_no_full_screen_reason.6.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.7.option_nm}}" {{ineligible_no_full_screen_reason.7.selected}} > {{ineligible_no_full_screen_reason.7.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>	
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="disinterest" style="color: #0c5449;" class="control-label col-sm-2">Disinterest?</label>
+			<div class="col-sm-2">
+				<select id="disinterest" class="form-control">
+					<option value="{{disinterest.0.option_nm}}" {{disinterest.0.selected}} > {{disinterest.0.option_text}} </option>
+					<option value="{{disinterest.1.option_nm}}" {{disinterest.1.selected}} > {{disinterest.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>		
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="disinterest_reason" style="color: #0c5449;" class="control-label col-sm-2">Disinterest Reason:</label>
+			<div class="col-sm-2">
+				<select id="disinterest_reason" class="form-control">
+					<option value="{{disinterest_reason.0.option_nm}}" {{disinterest_reason.0.selected}} > {{disinterest_reason.0.option_text}} </option>
+					<option value="{{disinterest_reason.1.option_nm}}" {{disinterest_reason.1.selected}} > {{disinterest_reason.1.option_text}} </option>
+					<option value="{{disinterest_reason.2.option_nm}}" {{disinterest_reason.2.selected}} > {{disinterest_reason.2.option_text}} </option>
+					<option value="{{disinterest_reason.3.option_nm}}" {{disinterest_reason.3.selected}} > {{disinterest_reason.3.option_text}} </option>
+					<option value="{{disinterest_reason.4.option_nm}}" {{disinterest_reason.4.selected}} > {{disinterest_reason.4.option_text}} </option>
+					<option value="{{disinterest_reason.5.option_nm}}" {{disinterest_reason.5.selected}} > {{disinterest_reason.5.option_text}} </option>
+					<option value="{{disinterest_reason.6.option_nm}}" {{disinterest_reason.6.selected}} > {{disinterest_reason.6.option_text}} </option>
+					<option value="{{disinterest_reason.7.option_nm}}" {{disinterest_reason.7.selected}} > {{disinterest_reason.7.option_text}} </option>
+					<option value="{{disinterest_reason.8.option_nm}}" {{disinterest_reason.8.selected}} > {{disinterest_reason.8.option_text}} </option>
+				</select>
+			</div>
+		</div>	<br>										
+
+		<div class="form-group">
+			<div class="col-sm-3"></div>
+			<label for="eligibility_status" style="color: #0c5449;" class="control-label col-sm-2">Is the Couple Eligible?</label>
+			<div class="col-sm-2">
+				<select id="eligibility_status" class="form-control eligibility_field">
+					<option value="{{eligibility_status.0.option_nm}}" {{eligibility_status.0.selected}} > {{eligibility_status.0.option_text}} </option>
+					<option value="{{eligibility_status.1.option_nm}}" {{eligibility_status.1.selected}} > {{eligibility_status.1.option_text}} </option>
+				</select>
+			</div>
+		</div> <br>		
+
+		<div class="form-group">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-6 row" style="text-align: center">
+				<button type="button" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary" onclick="updateInProgress()" />Update Participant</button> 
+				<button type="button" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary" onclick="insertToPerm()" />Insert to Permanent Dataset</button> 
+			</div>
+		</div>
+
+	</form>
+</div>
+
+</body>
+</html>
