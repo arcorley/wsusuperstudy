@@ -158,6 +158,16 @@ $(document).ready(function(){
 		}
 	});
 
+	/******** Eligibility function ********/
+	$(".eligibility_field").on('change',function(){
+		if ($("#ppt_age").val() < 18 || $("#partner_age").val() <18){
+			$("#eligibility_status").val() = "no";
+		}
+		else{
+			$("#eligibility_status").val() = "yes";
+		}
+	});
+
 });
 
 function userLogin(){
