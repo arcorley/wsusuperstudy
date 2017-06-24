@@ -208,14 +208,6 @@ $(document).ready(function(){
 		var englishCheck = $("#english_check").val();
 		var partnerPainStatus = '';
 
-		console.log('Partner Daily Pain: ' + partnerDailyPain);
-		console.log('Partner Pain Level: ' + partnerPainLevel);
-		console.log('Partner Pain Interference: ' + partnerPainInterference);
-		console.log('Partner Pain Years: ' + partnerPainYrs);
-		console.log('Partner Pain Mos: ' + partnerPainMos);
-		console.log('Partner Pain Length: ' + partnerPainLength);
-		console.log('Partner Pain Type: ' + partnerPainType);
-
 		if (partnerDailyPain == 'yes' && partnerPainType == 'body_pain' && partnerPainLevel >= 3 && partnerPainInterference >=3 && partnerPainLength >=3){
 			partnerPainStatus='Chronic';
 		}
@@ -231,9 +223,6 @@ $(document).ready(function(){
 		else{
 			partnerPainStatus='Not Significant';
 		}
-
-		console.log("Ppt Pain Status: " + pptPainStatus);
-		console.log("Partner Pain Status: " + partnerPainStatus);
 
 		/*****Age Check*****/
 		if (pptAge < 18 || partnerAge <18){
