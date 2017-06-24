@@ -23,7 +23,9 @@ fieldset{
 </style>
 
 <body>
-<h2 style="color: #0c5449; padding-left: 10px; text-align: center;">In Progress Participant Update Form </h2> </br></br>
+<h2 style="color: #0c5449; padding-left: 10px; text-align: center;">In Progress Participant Update Form: PPT ID# {{ppt_results.0.ppt_id}} </h2> </br></br>
+
+<div id="ppt_id" style="display:none;" value="{{ppt_results.0.ppt_id}}"></div>
 
 <div class="container-fluid">
 	<form class="form-horizontal">
@@ -214,7 +216,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="english_check" style="color: #0c5449;" class="control-label col-sm-2">Can both partners speak, read, and write in English?</label>
 			<div class="col-sm-2">
-				<select id="english_check" class="form-control">
+				<select id="english_check" class="form-control eligibility_field">
 					<option value="{{english_check.0.option_nm}}" {{english_check.0.selected}} > {{english_check.0.option_text}} </option>
 					<option value="{{english_check.1.option_nm}}" {{english_check.1.selected}} > {{english_check.1.option_text}} </option>
 				</select>
@@ -289,7 +291,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="living_together_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="living_together_yrs" value="{{ppt_results.living_together_yrs}}">
+				<input type="number" class="form-control eligibility_field" id="living_together_yrs" value="{{ppt_results.living_together_yrs}}">
 			</div>
 		</div>
 
@@ -297,7 +299,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="living_together_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="living_together_mos" value="{{ppt_results.living_together_mos}}">
+				<input type="number" class="form-control eligibility_field" id="living_together_mos" value="{{ppt_results.living_together_mos}}">
 			</div>
 		</div>	<br>
 
@@ -491,7 +493,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="completed_screen" style="color: #0c5449;" class="control-label col-sm-2">Completed Screen?</label>
 			<div class="col-sm-2">
-				<select id="completed_screen" class="form-control">
+				<select id="completed_screen" class="form-control eligibility_field">
 					<option value="{{completed_screen.0.option_nm}}" {{completed_screen.0.selected}} > {{completed_screen.0.option_text}} </option>
 					<option value="{{completed_screen.1.option_nm}}" {{completed_screen.1.selected}} > {{completed_screen.1.option_text}} </option>
 				</select>
@@ -567,7 +569,7 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="eligibility_status" style="color: #0c5449;" class="control-label col-sm-2">Is the Couple Eligible?</label>
 			<div class="col-sm-2">
-				<select id="eligibility_status" class="form-control">
+				<select id="eligibility_status" class="form-control eligibility_field">
 					<option value="{{eligibility_status.0.option_nm}}" {{eligibility_status.0.selected}} > {{eligibility_status.0.option_text}} </option>
 					<option value="{{eligibility_status.1.option_nm}}" {{eligibility_status.1.selected}} > {{eligibility_status.1.option_text}} </option>
 				</select>
@@ -577,7 +579,7 @@ fieldset{
 		<div class="formgroup">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-4">
-				<button type="button" id="submitNew" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary center-block" onclick="addNew()" />Submit</button><br><br> 
+				<button type="button" id="submitNew" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary center-block" onclick="updateInProgress()" />Submit</button><br><br> 
 			</div>
 		</div>
 
