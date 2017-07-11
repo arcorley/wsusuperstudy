@@ -181,6 +181,12 @@ $(document).ready(function(){
 		var pptPainType = $("#ppt_pain_type").val();
 		var pptPainStatus = '';
 
+		console.log("Ppt daily pain: " + pptDailyPain);
+		console.log("Ppt pain length: " + pptPainLength);
+		console.log("Ppt pain level: " + pptPainLevel);
+		console.log("Ppt pain interference: " + pptPainInterference);
+		console.log("Ppt pain type: " + pptPainType);
+
 		if (pptDailyPain == 'yes' && pptPainType == 'body_pain' && pptPainLevel >= 3 && pptPainInterference >=3 && pptPainLength >=3){
 			pptPainStatus='Chronic';
 		}
@@ -190,12 +196,14 @@ $(document).ready(function(){
 		else if (pptDailyPain == 'yes' && pptPainLevel <3 && pptPainInterference >=3 && pptPainLength >=3){
 			pptPainStatus='Significant';
 		}
-		if (pptDailyPain == 'yes' && pptPainType != 'body_pain' && pptPainLevel >= 3 && pptPainInterference >=3 && pptPainLength >=3){
+		else if (pptDailyPain == 'yes' && pptPainType != 'body_pain' && pptPainLevel >= 3 && pptPainInterference >=3 && pptPainLength >=3){
 			pptPainStatus='Significant';
 		}		
 		else{
 			pptPainStatus='Not Significant';
 		}
+
+		console.log("Ppt pain status: " + pptPainStatus);
 
 		/*****Assign Partner Pain Level*****/
 		var partnerDailyPain = $("#partner_daily_pain").val();
@@ -269,6 +277,26 @@ $(document).ready(function(){
 			console.log(ineligibleReason);
 			return;			
 		}
+		else if (pptPainStatus == 'Chronic' && partnerPainStatus == 'Not Significant'){
+			$("#eligibility_status").val('yes');
+			return;
+		} 
+		else if (pptPainStatus == 'Not Significant' && partnerPainStatus == 'Chronic'){
+			$("#eligibility_status").val('yes');
+			return;
+		}
+		else if (pptPainStatus == 'Significant' && partnerPainStatus == 'Not Significant'){
+			$("#eligibility_status").val('no');
+			ineligibleReason = "Neither partner has chronic pain";
+			return;
+		}
+		else if (pptPainStatus == 'Not Significant' && partnerPainStatus == 'Significant'){
+			$("#eligibility_status").val('no');
+			ineligibleReason = "Neither partner has chronic pain";
+			return;
+		}
+
+		console.log(ineligibleReason);
 
 
 		$("#eligibility_status").val('yes');
@@ -321,6 +349,7 @@ function updateInProgress(){
 	var partner_last_nm = document.getElementById("partner_last_nm").value;
 	var partner_cell_phone_no = document.getElementById("partner_cell_phone_no").value;
 	var partner_home_phone_no = document.getElementById("partner_home_phone_no").value;
+	var english_check = document.getElementById("english_check").value;
 	var partner_email = document.getElementById("partner_email").value;
 	var ppt_age = document.getElementById("ppt_age").value;
 	var partner_age = document.getElementById("partner_age").value;
@@ -369,6 +398,7 @@ function updateInProgress(){
 					partner_cell_phone_no: partner_cell_phone_no, 
 					partner_home_phone_no: partner_home_phone_no, 
 					partner_email: partner_email, 
+					english_check: english_check,
 					ppt_age: ppt_age, 
 					partner_age: partner_age, 
 					married_flag: married_flag, 
@@ -430,6 +460,7 @@ function insertToPerm(){
 	var partner_last_nm = document.getElementById("partner_last_nm").value;
 	var partner_cell_phone_no = document.getElementById("partner_cell_phone_no").value;
 	var partner_home_phone_no = document.getElementById("partner_home_phone_no").value;
+	var english_check = document.getElementById("english_check").value;
 	var partner_email = document.getElementById("partner_email").value;
 	var ppt_age = document.getElementById("ppt_age").value;
 	var partner_age = document.getElementById("partner_age").value;
@@ -478,6 +509,7 @@ function insertToPerm(){
 					partner_cell_phone_no: partner_cell_phone_no, 
 					partner_home_phone_no: partner_home_phone_no, 
 					partner_email: partner_email, 
+					english_check: english_check,
 					ppt_age: ppt_age, 
 					partner_age: partner_age, 
 					married_flag: married_flag, 
