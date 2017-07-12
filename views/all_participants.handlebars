@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-		<a class="navbar-brand" style="font-weight: bold; font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/lab_login_landing">WSU Super Study</a>
+    <a class="navbar-brand" style="font-weight: bold; font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/lab_login_landing">WSU Super Study</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/lab_login_landing">Home</a></li>
@@ -22,5 +22,34 @@
     </ul>
   </div>
 </nav>
+
+<br><br>
+
+<div class="container-fluid">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <table id="in_progress" class="table table-striped">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Participant Name</td>
+          <td>Cell Phone Number</td>
+          <td>Email Address</td>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each ppt_results}}
+        <tr>
+          <td>{{this.ppt_id}}</td>
+          <td>{{this.ppt_first_nm}} {{this.ppt_last_nm}}</td>
+          <td>{{this.ppt_cell_phone_no}}</td>
+          <td>{{this.ppt_email}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+      
 
 </html>
