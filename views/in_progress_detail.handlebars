@@ -22,7 +22,20 @@ fieldset{
 }
 </style>
 
-<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+		<div class="navbar-brand" style="font-weight: bold; font-family: Arial; color: #0c5449;">WSU Super Study</div>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/participants_in_progress">Participants In Progress</a></li>
+      <li><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/contact_log">Contact Log</a></li>
+      <li><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/all_participants">All Participants</a></li>
+    </ul>
+  </div>
+</nav>
+
+<body style="padding-top: 70px;">
 <h2 style="color: #0c5449; padding-left: 10px; text-align: center;">In Progress Participant Update Form: PPT ID# {{ppt_results.0.ppt_id}} </h2> </br></br>
 
 <div style="display:none;">
@@ -524,7 +537,7 @@ fieldset{
 		<div class="form-group">
 			<div class="col-sm-3"></div>
 			<label for="ineligible_no_full_screen_reason" style="color: #0c5449;" class="control-label col-sm-2">Reason Ineligible without Full Screen:</label>
-			<div class="col-sm-1">
+			<div class="col-sm-2">
 				<select id="ineligible_no_full_screen_reason" class="form-control">
 					<option value="{{ineligible_no_full_screen_reason.0.option_nm}}" {{ineligible_no_full_screen_reason.0.selected}} > {{ineligible_no_full_screen_reason.0.option_text}} </option>
 					<option value="{{ineligible_no_full_screen_reason.1.option_nm}}" {{ineligible_no_full_screen_reason.1.selected}} > {{ineligible_no_full_screen_reason.1.option_text}} </option>
