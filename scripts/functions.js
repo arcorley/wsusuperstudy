@@ -25,7 +25,7 @@ function addNew(){
 	var married_flag = document.getElementById("married_flag").value;
 	var rel_length = (document.getElementById("rel_length_mos").value * 1) + (document.getElementById("rel_length_yrs").value * 12);
 	var living_together = document.getElementById("living_together").value;
-	var living_together_length = (document.getElementById("living_together_yrs").value * 1) + (document.getElementById("living_together_mos").value * 12);
+	var living_together_length = (document.getElementById("living_together_yrs").value * 12) + (document.getElementById("living_together_mos").value * 1);
 	var ppt_daily_pain = document.getElementById("ppt_daily_pain").value;
 	var ppt_pain_length = (document.getElementById("ppt_pain_length_mos").value * 1) + (document.getElementById("ppt_pain_length_yrs").value * 12);
 	var ppt_pain_location = document.getElementById("ppt_pain_location").value;
@@ -155,6 +155,8 @@ $(document).ready(function(){
 			$("#living_together_hidden").hide();
 			$("#living_together_hidden_yrs").hide();
 			$("#living_together_hidden_mos").hide();
+			$("#living_together_yrs").val('0');
+			$("#living_together_mos").val('0');
 		}
 	});
 
@@ -320,7 +322,7 @@ function userLogin(){
 
 	req.addEventListener('load', function(){ //listen for a response
 			if(req.status == 200){
-				window.location = "https://www.wsusuperstudy.com/lab_login_landing";
+				window.location = "https://www.wsusuperstudy.com/participants_in_progress";
 			}
 			else{
 				alert("The username/password combination supplied was incorrect.");
@@ -435,7 +437,7 @@ function updateInProgress(){
 
 	req.addEventListener('load', function(){
 		alert("Participant data updated!");
-		window.location ="https://www.wsusuperstudy.com/participants_in_progress";
+		window.location ="https://www.wsusuperstudy.com/in_progress_detail?ppt_id=" + ppt_id;
 	});
 }
 
@@ -657,6 +659,6 @@ function updatePerm(){
 
 	req.addEventListener('load', function(){
 		alert("Participant data updated!");
-		window.location ="https://www.wsusuperstudy.com/all_participants";
+		window.location ="https://www.wsusuperstudy.com/all_participants_detail?ppt_id=" + ppt_id;
 	});
 }
