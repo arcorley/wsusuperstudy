@@ -9,15 +9,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
+<script src="scripts/participants_in_progress.js"></script>
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
 		<div class="navbar-brand" style="font-weight: bold; font-family: Arial; color: #0c5449;">WSU Super Study</div>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/participants_in_progress">Participants In Progress</a></li>
-      <li><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/contact_log">Contact Log</a></li>
-      <li><a style="font-family: Arial; color: #0c5449;" href="https://www.wsusuperstudy.com/all_participants">All Participants</a></li>
+      <li class="active"><a style="font-family: Arial; color: #0c5449;" href="javascript:inProgress()" >Participants In Progress</a></li>
+      <li><a style="font-family: Arial; color: #0c5449;" href="javascript:contactLog()" >Contact Log</a></li>
+      <li><a style="font-family: Arial; color: #0c5449;" href="javascript:allParticipants()" >All Participants</a></li>
     </ul>
   </div>
 </nav>
@@ -39,7 +41,7 @@
 			<tbody>
 			{{#each ppt_results}}
 				<tr>
-					<td><a style="text-decoration: underline;" href="https://www.wsusuperstudy.com/in_progress_detail?ppt_id={{this.ppt_id}}">{{this.ppt_id}}</a></td>
+					<td><a style="text-decoration: underline;" href="javascript:inProgressDetail({{this.ppt_id}})">{{this.ppt_id}}</a></td>
 					<td>{{this.ppt_first_nm}} {{this.ppt_last_nm}}</td>
 					<td>{{this.ppt_cell_phone_no}}</td>
 					<td>{{this.ppt_email}}</td>
