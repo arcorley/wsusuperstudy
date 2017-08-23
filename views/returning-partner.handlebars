@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
 </head>
 
-<script src="scripts/functions.js"></script>
+<script src="scripts/returning-partner.js"></script>
 
 <style>
 fieldset{
@@ -59,10 +59,21 @@ fieldset{
 
 		<div class="form-group">
 			<div class="col-sm-3"></div>
+			<label for="partner_daily_pain" style="color: #0c5449;" class="control-label col-sm-2">Do you have any pain that occurs nearly every day?</label>
+			<div class="col-sm-2">
+				<select id="partner_daily_pain" class="form-control">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+		</div> <br>
+
+		<div class="form-group" id="pain_length_hidden">
+			<div class="col-sm-3"></div>
 			<label style="color: #0c5449; text-align: left; padding-left: 25px;" class="control-label col-sm-2">How long has your pain lasted?</label>
 		</div>
 
-		<div class="form-group"> 
+		<div class="form-group" id ="pain_length_yrs_hidden"> 
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_length_yrs" style="color:#0c5449;" class="control-label col-sm-2">Years:</label>
 			<div class="col-sm-2">
@@ -70,7 +81,7 @@ fieldset{
 			</div>
 		</div>
 
-		<div class="form-group"> 
+		<div class="form-group" id ="pain_length_mos_hidden"> 
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_length_mos" style="color:#0c5449;" class="control-label col-sm-2">Months:</label>
 			<div class="col-sm-2">
@@ -78,7 +89,7 @@ fieldset{
 			</div>
 		</div> <br>	
 
-		<div class="form-group"> 
+		<div class="form-group" id="pain_location_hidden"> 
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_location" style="color:#0c5449;" class="control-label col-sm-2">Where is your pain located?</label>
 			<div class="col-sm-2">
@@ -86,7 +97,7 @@ fieldset{
 			</div>
 		</div>	
 
-		<div class="form-group">
+		<div class="form-group" id="pain_level_hidden">
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_level" style="color: #0c5449;" class="control-label col-sm-2">On a scale from 0 (no pain) to 10 (pain as bad as you can imagine), what number best describes your chronic pain intensity on average?</label>
 			<div class="col-sm-1">
@@ -106,7 +117,7 @@ fieldset{
 			</div>
 		</div>	<br>
 
-		<div class="form-group">
+		<div class="form-group" id="pain_interference_hidden">
 			<div class="col-sm-3"></div>
 			<label for="partner_pain_interference" style="color: #0c5449;" class="control-label col-sm-2">On a scale from 0 (pain does not interfere at all) to 10 (pain completely interferes), how much does pain interfere with your general activity on average?</label>
 			<div class="col-sm-1">
