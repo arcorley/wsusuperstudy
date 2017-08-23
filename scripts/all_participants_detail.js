@@ -38,6 +38,29 @@ $(document).ready(function(){
 		}
 	});
 
+	/******** Hide/Show function for the ineligible no full screen reason dropdown ********/
+	$("#ineligible_no_full_screen").on('change',function(){
+		if ($("#ineligible_no_full_screen").val() == "yes"){
+			$("#ineligible_screen_hidden").show();
+		}
+		else{
+			$("#ineligible_screen_hidden").hide();
+			$("#ineligible_no_full_screen_reason").val('none');
+		}
+	});	
+
+	/******** Hide/Show function for the disinterest reason dropdown ********/
+	$("#disinterest").on('change',function(){
+		if ($("#disinterest").val() == "yes"){
+			$("#disinterest_reason_hidden").show();
+		}
+		else{
+			$("#disinterest_reason_hidden").hide();
+			$("#disinterest_reason").val('none');
+		}
+	});
+
+
 	/******** Eligibility function ********/
 	$(".eligibility_field").on('change',function(){
 		//declare variables for calculations
@@ -50,6 +73,8 @@ $(document).ready(function(){
 		var livingTogetherLength = (livingTogetherYrs * 12) + livingTogetherMos;
 		var completedScreen = $("#completed_screen").val();
 		var ineligibleReason = '';
+		var ineligibleScreen = $("#ineligible_no_full_screen").val();
+		var disinterest = $("#disinterest").val();		
 
 		/*****Assign Participant Pain Level*****/
 		var pptDailyPain = $("#ppt_daily_pain").val();
@@ -145,7 +170,15 @@ $(document).ready(function(){
 		}
 
 		/*****Pain Status Check*****/
-		if (pptPainStatus != 'Not Significant' && partnerPainStatus != 'Not Significant'){
+		if (ineligibleScreen == 'yes'){
+			$("#eligibility_status").val('no');
+			ineligibleReason = 'Participant is ineligible without full screen';
+		}
+		else if (disinterest == 'yes'){
+			$("#eligibility_status").val('no');
+			ineligibleReason = 'Participant is not interested';
+		}
+		else if (pptPainStatus != 'Not Significant' && partnerPainStatus != 'Not Significant'){
 			$("#eligibility_status").val('no');
 			ineligibleReason = 'Both partners have significant or chronic pain';
 			console.log(ineligibleReason);
