@@ -47,7 +47,7 @@ function addNew(){
 					future_contact_method: future_contact_method, partner_interest: partner_interest, partner_first_nm: partner_first_nm, partner_last_nm: partner_last_nm, partner_cell_phone_no: partner_cell_phone_no, 
 					partner_home_phone_no: partner_home_phone_no, partner_email: partner_email, english_check: english_check, ppt_age: ppt_age, partner_age: partner_age, married_flag: married_flag, rel_length: rel_length, 
 					living_together: living_together, living_together_length: living_together_length, ppt_daily_pain: ppt_daily_pain, ppt_pain_length: ppt_pain_length, 
-					ppt_pain_location: ppt_pain_location, ppt_pain_level: ppt_pain_level, ppt_pain_interference: ppt_pain_interference, partner_daily_pain: partner_daily_pain, completed_screen: "no", num_contacts: 0,
+					ppt_pain_location: ppt_pain_location, ppt_pain_level: ppt_pain_level, ppt_pain_interference: ppt_pain_interference, partner_daily_pain: partner_daily_pain, completed_screen: "yes", num_contacts: 0,
 					ineligible_no_full_screen: "no", disinterest: "no", eligibility_status: "no"};
 
 	var req = new XMLHttpRequest();
