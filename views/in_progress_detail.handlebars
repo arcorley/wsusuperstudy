@@ -407,6 +407,7 @@ fieldset{
 					<option value="{{ppt_pain_type.1.option_nm}}" {{ppt_pain_type.1.selected}} > {{ppt_pain_type.1.option_text}} </option>
 					<option value="{{ppt_pain_type.2.option_nm}}" {{ppt_pain_type.2.selected}} > {{ppt_pain_type.2.option_text}} </option>
 					<option value="{{ppt_pain_type.3.option_nm}}" {{ppt_pain_type.3.selected}} > {{ppt_pain_type.3.option_text}} </option>
+					<option value="{{ppt_pain_type.4.option_nm}}" {{ppt_pain_type.4.selected}} > {{ppt_pain_type.4.option_text}} </option>
 				</select>
 			</div>
 		</div>	<br>			
@@ -500,6 +501,7 @@ fieldset{
 					<option value="{{partner_pain_type.1.option_nm}}" {{partner_pain_type.1.selected}} > {{partner_pain_type.1.option_text}} </option>
 					<option value="{{partner_pain_type.2.option_nm}}" {{partner_pain_type.2.selected}} > {{partner_pain_type.2.option_text}} </option>
 					<option value="{{partner_pain_type.3.option_nm}}" {{partner_pain_type.3.selected}} > {{partner_pain_type.3.option_text}} </option>
+					<option value="{{partner_pain_type.4.option_nm}}" {{partner_pain_type.4.selected}} > {{partner_pain_type.4.option_text}} </option>
 				</select>
 			</div>
 		</div>	<br>			
@@ -527,14 +529,14 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="ineligible_no_full_screen" style="color: #0c5449;" class="control-label col-sm-2">Ineligible without Full Screen?</label>
 			<div class="col-sm-2">
-				<select id="ineligible_no_full_screen" class="form-control">
+				<select id="ineligible_no_full_screen" class="form-control eligibility_field">
 					<option value="{{ineligible_no_full_screen.0.option_nm}}" {{ineligible_no_full_screen.0.selected}} > {{ineligible_no_full_screen.0.option_text}} </option>
 					<option value="{{ineligible_no_full_screen.1.option_nm}}" {{ineligible_no_full_screen.1.selected}} > {{ineligible_no_full_screen.1.option_text}} </option>
 				</select>
 			</div>
 		</div> <br>		
 
-		<div class="form-group">
+		<div class="form-group" id="ineligible_screen_hidden">
 			<div class="col-sm-3"></div>
 			<label for="ineligible_no_full_screen_reason" style="color: #0c5449;" class="control-label col-sm-2">Reason Ineligible without Full Screen:</label>
 			<div class="col-sm-2">
@@ -547,6 +549,7 @@ fieldset{
 					<option value="{{ineligible_no_full_screen_reason.5.option_nm}}" {{ineligible_no_full_screen_reason.5.selected}} > {{ineligible_no_full_screen_reason.5.option_text}} </option>
 					<option value="{{ineligible_no_full_screen_reason.6.option_nm}}" {{ineligible_no_full_screen_reason.6.selected}} > {{ineligible_no_full_screen_reason.6.option_text}} </option>
 					<option value="{{ineligible_no_full_screen_reason.7.option_nm}}" {{ineligible_no_full_screen_reason.7.selected}} > {{ineligible_no_full_screen_reason.7.option_text}} </option>
+					<option value="{{ineligible_no_full_screen_reason.8.option_nm}}" {{ineligible_no_full_screen_reason.8.selected}} > {{ineligible_no_full_screen_reason.8.option_text}} </option>
 				</select>
 			</div>
 		</div>	<br>	
@@ -555,14 +558,14 @@ fieldset{
 			<div class="col-sm-3"></div>
 			<label for="disinterest" style="color: #0c5449;" class="control-label col-sm-2">Disinterest?</label>
 			<div class="col-sm-2">
-				<select id="disinterest" class="form-control">
+				<select id="disinterest" class="form-control eligibility_field">
 					<option value="{{disinterest.0.option_nm}}" {{disinterest.0.selected}} > {{disinterest.0.option_text}} </option>
 					<option value="{{disinterest.1.option_nm}}" {{disinterest.1.selected}} > {{disinterest.1.option_text}} </option>
 				</select>
 			</div>
 		</div> <br>		
 
-		<div class="form-group">
+		<div class="form-group" id="disinterest_reason_hidden">
 			<div class="col-sm-3"></div>
 			<label for="disinterest_reason" style="color: #0c5449;" class="control-label col-sm-2">Disinterest Reason:</label>
 			<div class="col-sm-2">
@@ -576,6 +579,8 @@ fieldset{
 					<option value="{{disinterest_reason.6.option_nm}}" {{disinterest_reason.6.selected}} > {{disinterest_reason.6.option_text}} </option>
 					<option value="{{disinterest_reason.7.option_nm}}" {{disinterest_reason.7.selected}} > {{disinterest_reason.7.option_text}} </option>
 					<option value="{{disinterest_reason.8.option_nm}}" {{disinterest_reason.8.selected}} > {{disinterest_reason.8.option_text}} </option>
+					<option value="{{disinterest_reason.9.option_nm}}" {{disinterest_reason.9.selected}} > {{disinterest_reason.9.option_text}} </option>
+					<option value="{{disinterest_reason.10.option_nm}}" {{disinterest_reason.10.selected}} > {{disinterest_reason.10.option_text}} </option>
 				</select>
 			</div>
 		</div>	<br>										
