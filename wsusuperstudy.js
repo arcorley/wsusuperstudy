@@ -307,8 +307,9 @@ app.get('/in_progress_detail', function(req, res, next){
 				" WHERE a.field_nm='ppt_pain_type';" +
 			" SELECT a.*, case when part_pt.partner_pain_type IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" + //21
 				" LEFT JOIN (SELECT partner_pain_type from super_study.participants_temp WHERE ppt_id=?) part_pt ON a.option_nm = part_pt.partner_pain_type" +
-				" WHERE a.field_nm='partner_pain_type';"
-			,[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
+				" WHERE a.field_nm='partner_pain_type';" +
+			" SELECT ppt_clog_id, ppt_id, DATE_FORMAT(contact_date, '%m/%d/%Y') as contact_date, contact_method, ra, outcome, notes FROM super_study.contact_log WHERE ppt_id=? ORDER BY contact_date" //22
+			,[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
 				if(err){
 					next(err);
 					return;
@@ -343,6 +344,7 @@ app.get('/in_progress_detail', function(req, res, next){
 				context.disinterest_reason = rows[19];
 				context.ppt_pain_type = rows[20];
 				context.partner_pain_type = rows[21];
+				context.clog_results = rows[22];
 				res.render('in_progress_detail', context);
 			});
 		}
@@ -371,8 +373,8 @@ app.post('/update_in_progress', function(req,res,next){
 
 /**************INSERT PPT IN PERM DATASET******************/
 app.post('/insert_to_perm', function(req, res, next){
-	mysql.pool.query("INSERT INTO super_study.participants (`ppt_first_nm`,`ppt_last_nm`,`ppt_cell_phone_no`,`ppt_home_phone_no`,`ppt_email`,`addr_line_1`,`addr_line_2`,`addr_city`,`addr_state`,`addr_zip`,`referred_by`,`referred_by_other`,`future_contact`,`future_contact_method`,`partner_interest`,`partner_first_nm`,`partner_last_nm`,`partner_cell_phone_no`,`partner_home_phone_no`,`partner_email`,`english_check`,`ppt_age`,`partner_age`,`married_flag`,`rel_length`,`living_together`,`living_together_length`,`ppt_daily_pain`,`ppt_pain_length`,`ppt_pain_location`,`ppt_pain_level`,`ppt_pain_interference`,`ppt_pain_type`,`partner_daily_pain`,`partner_pain_length`,`partner_pain_location`,`partner_pain_level`,`partner_pain_interference`,`partner_pain_type`,`completed_screen`,`num_contacts`,`ineligible_no_full_screen`,`ineligible_no_full_screen_reason`,`disinterest`,`disinterest_reason`,`eligibility_status`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); DELETE FROM super_study.participants_temp WHERE ppt_id=?;",
-	[req.body.ppt_first_nm, req.body.ppt_last_nm, req.body.ppt_cell_phone_no, req.body.ppt_home_phone_no, req.body.ppt_email, req.body.addr_line_1, req.body.addr_line_2, req.body.addr_city, req.body.addr_state, req.body.addr_zip, req.body.referred_by, req.body.referred_by_other, req.body.future_contact, req.body.future_contact_method, req.body.partner_interest, req.body.partner_first_nm, req.body.partner_last_nm, req.body.partner_cell_phone_no, req.body.partner_home_phone_no, req.body.partner_email, req.body.english_check, req.body.ppt_age, req.body.partner_age, req.body.married_flag, req.body.rel_length, req.body.living_together, req.body.living_together_length, req.body.ppt_daily_pain, req.body.ppt_pain_length, req.body.ppt_pain_location, req.body.ppt_pain_level, req.body.ppt_pain_interference, req.body.ppt_pain_type, req.body.partner_daily_pain, req.body.partner_pain_length, req.body.partner_pain_location, req.body.partner_pain_level, req.body.partner_pain_interference, req.body.partner_pain_type, req.body.completed_screen, req.body.num_contacts, req.body.ineligible_no_full_screen, req.body.ineligible_no_full_screen_reason, req.body.disinterest, req.body.disinterest_reason, req.body.eligibility_status, req.body.ppt_id],
+	mysql.pool.query("INSERT INTO super_study.participants (`ppt_id`,`ppt_first_nm`,`ppt_last_nm`,`ppt_cell_phone_no`,`ppt_home_phone_no`,`ppt_email`,`addr_line_1`,`addr_line_2`,`addr_city`,`addr_state`,`addr_zip`,`referred_by`,`referred_by_other`,`future_contact`,`future_contact_method`,`partner_interest`,`partner_first_nm`,`partner_last_nm`,`partner_cell_phone_no`,`partner_home_phone_no`,`partner_email`,`english_check`,`ppt_age`,`partner_age`,`married_flag`,`rel_length`,`living_together`,`living_together_length`,`ppt_daily_pain`,`ppt_pain_length`,`ppt_pain_location`,`ppt_pain_level`,`ppt_pain_interference`,`ppt_pain_type`,`partner_daily_pain`,`partner_pain_length`,`partner_pain_location`,`partner_pain_level`,`partner_pain_interference`,`partner_pain_type`,`completed_screen`,`num_contacts`,`ineligible_no_full_screen`,`ineligible_no_full_screen_reason`,`disinterest`,`disinterest_reason`,`eligibility_status`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); DELETE FROM super_study.participants_temp WHERE ppt_id=?;",
+	[req.body.ppt_id, req.body.ppt_first_nm, req.body.ppt_last_nm, req.body.ppt_cell_phone_no, req.body.ppt_home_phone_no, req.body.ppt_email, req.body.addr_line_1, req.body.addr_line_2, req.body.addr_city, req.body.addr_state, req.body.addr_zip, req.body.referred_by, req.body.referred_by_other, req.body.future_contact, req.body.future_contact_method, req.body.partner_interest, req.body.partner_first_nm, req.body.partner_last_nm, req.body.partner_cell_phone_no, req.body.partner_home_phone_no, req.body.partner_email, req.body.english_check, req.body.ppt_age, req.body.partner_age, req.body.married_flag, req.body.rel_length, req.body.living_together, req.body.living_together_length, req.body.ppt_daily_pain, req.body.ppt_pain_length, req.body.ppt_pain_location, req.body.ppt_pain_level, req.body.ppt_pain_interference, req.body.ppt_pain_type, req.body.partner_daily_pain, req.body.partner_pain_length, req.body.partner_pain_location, req.body.partner_pain_level, req.body.partner_pain_interference, req.body.partner_pain_type, req.body.completed_screen, req.body.num_contacts, req.body.ineligible_no_full_screen, req.body.ineligible_no_full_screen_reason, req.body.disinterest, req.body.disinterest_reason, req.body.eligibility_status, req.body.ppt_id],
 	function(err, result){
 		if(err){
 			next(err);
@@ -455,8 +457,9 @@ app.get('/all_participants_detail', function(req, res, next){
 				" WHERE a.field_nm='ppt_pain_type';" +
 			" SELECT a.*, case when part_pt.partner_pain_type IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a" + //21
 				" LEFT JOIN (SELECT partner_pain_type from super_study.participants WHERE ppt_id=?) part_pt ON a.option_nm = part_pt.partner_pain_type" +
-				" WHERE a.field_nm='partner_pain_type';"
-			,[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
+				" WHERE a.field_nm='partner_pain_type';" +
+			" SELECT ppt_clog_id, ppt_id, DATE_FORMAT(contact_date, '%m/%d/%Y') as contact_date, contact_method, ra, outcome, notes FROM super_study.contact_log WHERE ppt_id=? ORDER BY contact_date" //22
+			,[req.query.ppt_id, req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id,req.query.ppt_id], function(err, rows, fields){
 				if(err){
 					next(err);
 					return;
@@ -491,6 +494,7 @@ app.get('/all_participants_detail', function(req, res, next){
 				context.disinterest_reason = rows[19];
 				context.ppt_pain_type = rows[20];
 				context.partner_pain_type = rows[21];
+				context.clog_results = rows[22];
 				res.render('all_participants_detail', context);
 			});
 		}
@@ -517,6 +521,130 @@ app.post('/update_perm', function(req,res,next){
 	res.send();
 });
 
+
+/*******************RENDER THE EDIT CONTACT LOG PAGE****************/
+app.get('/edit_clog', function(req,res,next){
+	if (req.headers["x-forwarded-for"]){ 
+		if (req.session.name){
+			var context = {};
+			mysql.pool.query("SELECT ppt_clog_id, ppt_id, DATE_FORMAT(contact_date, '%m/%d/%Y') as contact_date, DATE_FORMAT(contact_date, '%Y-%m-%d') as html_date, contact_method, ra, outcome, notes FROM super_study.contact_log WHERE ppt_clog_id=?;" + //0
+				" SELECT a.*, case when cm.contact_method IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a " + //1
+					" LEFT JOIN (SELECT contact_method from super_study.contact_log WHERE ppt_clog_id=?) cm ON a.option_text = cm.contact_method" + 
+					" WHERE a.field_nm='contact_method';" + 
+				" SELECT a.*, case when ra.ra IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a " + //2
+					" LEFT JOIN (SELECT ra from super_study.contact_log WHERE ppt_clog_id=?) ra ON a.option_text = ra.ra" +
+					" WHERE a.field_nm='ra';" +
+				" SELECT a.*, case when outcome.outcome IS NOT NULL then 'selected' else '' end as selected FROM super_study.options a " + //3
+					" LEFT JOIN (SELECT outcome from super_study.contact_log WHERE ppt_clog_id=?) outcome ON a.option_text = outcome.outcome" + 
+					" WHERE a.field_nm='outcome';"
+				,
+				[req.query.ppt_clog_id,req.query.ppt_clog_id, req.query.ppt_clog_id, req.query.ppt_clog_id, req.query.ppt_clog_id],
+				function(err, rows, fields){
+					if(err){
+						next(err);
+						return;
+					}
+					context.clog_results = rows[0];
+					context.contact_method_options = rows[1];
+					context.ra_options = rows[2];
+					context.outcome_options = rows[3];
+					res.render('edit_clog', context);
+				});
+		}
+		else{
+			res.redirect('lab_login');
+		}	
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
+/***************UPDATE CONTACT LOG RECORD****************/
+app.post('/update_clog', function(req,res,next){
+	var temp_flag;
+	mysql.pool.query("UPDATE super_study.contact_log SET contact_date=?, contact_method=?, ra=?, outcome=?, notes=? WHERE ppt_clog_id=?;" +
+		" SELECT ppt_id from super_study.participants_temp where ppt_id=?;"
+		,
+	[req.body.contact_date, req.body.contact_method, req.body.ra, req.body.outcome, req.body.notes, req.body.ppt_clog_id, req.body.ppt_id],
+	function(err, rows, fields){
+		if(err){
+			next(err);
+			return;
+		}
+
+		console.log(rows[1]);
+
+		if (rows[1].length > 0){
+			temp_flag = 1;			
+		}
+		else{
+			temp_flag = 0;			
+		}
+
+		if (temp_flag == 1)
+			res.status(201).send();
+		else
+			res.status(202).send();
+	});
+});
+
+/*******************RENDER THE ADD CONTACT PAGE****************/
+app.get('/add_contact', function(req,res,next){
+	if (req.headers["x-forwarded-for"]){ 
+		if (req.session.name){
+			var context = {};
+			mysql.pool.query("SELECT DATE_FORMAT(CURDATE(), '%Y-%m-%d') as date;" + //0
+				" SELECT a.* FROM super_study.options a WHERE a.field_nm='contact_method';" + //1
+				" SELECT a.* FROM super_study.options a WHERE a.field_nm='ra'; " + //2
+				" SELECT a.* FROM super_study.options a WHERE a.field_nm='outcome';" //3
+				,[],
+				function(err, rows, fields){
+					if(err){
+						next(err);
+						return;
+					}
+					context.details = rows[0];
+					context.contact_method_options = rows[1];
+					context.ra_options = rows[2];
+					context.outcome_options = rows[3];
+					context.ppt_id = req.query.ppt_id;
+					res.render('add_contact', context);
+				});
+		}
+		else{
+			res.redirect('lab_login');
+		}	
+	}
+	else{
+		res.status(404).end();
+	}
+});
+
+/***************INSERT CONTACT LOG RECORD****************/
+app.post('/insert_contact', function(req,res,next){
+	var temp_flag;
+	mysql.pool.query("INSERT INTO super_study.contact_log (`ppt_id`,`contact_date`,`contact_method`,`ra`,`outcome`,`notes`) VALUES (?,?,?,?,?,?);" + //0
+		" SELECT ppt_id from super_study.participants_temp where ppt_id=?"
+		,
+	[req.body.ppt_id, req.body.contact_date, req.body.contact_method, req.body.ra, req.body.outcome, req.body.notes, req.body.ppt_id],
+	function(err, rows, fields){
+		if(err){
+			next(err);
+			return;
+		}
+
+		if (rows[1].length > 0)
+			temp_flag = 1;
+		else
+			temp_flag = 0;
+
+		if (temp_flag == 1)
+			res.status(201).send();
+		else
+			res.status(202).send();
+	});
+});
 
 /************RUN THE APP******************/
 app.listen(app.get('port'), function(){

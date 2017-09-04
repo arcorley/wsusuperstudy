@@ -53,7 +53,7 @@ primary key (`ppt_id`)
 ) engine=innodb;
 
 create table super_study.participants (
-`ppt_id` int(11) not null auto_increment,
+`ppt_id` int(11) not null,
 `ppt_first_nm` varchar(255),
 `ppt_last_nm` varchar(255),
 `ppt_cell_phone_no` varchar(255),
