@@ -27,6 +27,7 @@ $(document).ready(function(){
 		}
 		else{
 			$("#future_contact_hidden").hide();
+			$("#future_contact_method").val('none');
 		}
 	});
 
@@ -452,10 +453,14 @@ function inProgress(){
 	window.location = path + "participants_in_progress";
 }
 
-function contactLog(){
-	window.location = path + "contact_log";
-}
-
 function allParticipants(){
 	window.location = path + "all_participants";
+}
+
+function editClog(x, y){
+	window.location = path + "edit_clog?ppt_clog_id=" + x + "&ppt_id=" + y;
+}
+
+function addContact(x){
+	window.location = path + "add_contact?ppt_id=" + x;
 }
