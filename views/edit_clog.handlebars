@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+</head>
+
+<script src="scripts/edit_clog.js"></script>
+
+<style>
+fieldset{
+	text-align: left;
+}
+
+#referred_hidden{
+	display: none;
+}
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+		<div class="navbar-brand" style="font-weight: bold; font-family: Arial; color: #0c5449;">WSU Super Study</div>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a style="font-family: Arial; color: #0c5449;" href="javascript:inProgress()" >Participants In Progress</a></li>
+      <li><a style="font-family: Arial; color: #0c5449;" href="javascript:allParticipants()" >All Participants</a></li>
+    </ul>
+  </div>
+</nav>
+
+<body style="padding-top: 70px;">
+  <h2 style="color: #0c5449; padding-left: 10px; text-align: center;">Edit Contact: PPT ID# {{clog_results.0.ppt_id}} on {{clog_results.0.contact_date}}</h2> </br></br>
+
+  <div style="display:none;">
+    <input type="number" class="form-control" id="ppt_clog_id" value="{{clog_results.0.ppt_clog_id}}">
+  </div>
+
+  <div style="display:none;">
+    <input type="number" class="form-control" id="ppt_id" value="{{clog_results.0.ppt_id}}">
+  </div>
+
+  <div class="container-fluid">
+    <div class="row col-sm-12">
+      <form class="form-horizontal">
+
+        <div class="form-group row">
+          <div class="col-sm-3"></div>
+          <label for="contact_date" style="color: #0c5449;" class="control-label col-sm-2">Contact Date:</label>
+          <div class="col-sm-2">
+            <input type="date" class="form-control" id="contact_date" value="{{clog_results.0.html_date}}">
+          </div>
+        </div>
+      
+        <div class="form-group row">
+          <div class="col-sm-3"></div>
+          <label for="contact_method" style="color: #0c5449;" class="control-label col-sm-2">Contact Method:</label>
+          <div class="col-sm-2">
+            <select id="contact_method" class="form-control">
+              <option value="{{contact_method_options.0.option_nm}}" {{contact_method_options.0.selected}} >{{contact_method_options.0.option_text}}</option>
+              <option value="{{contact_method_options.1.option_nm}}" {{contact_method_options.1.selected}} >{{contact_method_options.1.option_text}}</option>
+              <option value="{{contact_method_options.2.option_nm}}" {{contact_method_options.2.selected}} >{{contact_method_options.2.option_text}}</option>
+              <option value="{{contact_method_options.3.option_nm}}" {{contact_method_options.3.selected}} >{{contact_method_options.3.option_text}}</option>
+              <option value="{{contact_method_options.4.option_nm}}" {{contact_method_options.4.selected}} >{{contact_method_options.4.option_text}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3"></div>
+          <label for="ra" style="color: #0c5449;" class="control-label col-sm-2">RA:</label>
+          <div class="col-sm-2">
+            <select id="ra" class="form-control">
+              <option value="{{ra_options.0.option_nm}}" {{ra_options.0.selected}} >{{ra_options.0.option_text}}</option>
+              <option value="{{ra_options.1.option_nm}}" {{ra_options.1.selected}} >{{ra_options.1.option_text}}</option>
+              <option value="{{ra_options.2.option_nm}}" {{ra_options.2.selected}} >{{ra_options.2.option_text}}</option>
+              <option value="{{ra_options.3.option_nm}}" {{ra_options.3.selected}} >{{ra_options.3.option_text}}</option>
+              <option value="{{ra_options.4.option_nm}}" {{ra_options.4.selected}} >{{ra_options.4.option_text}}</option>
+              <option value="{{ra_options.5.option_nm}}" {{ra_options.5.selected}} >{{ra_options.5.option_text}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3"></div>
+          <label for="outcome" style="color: #0c5449;" class="control-label col-sm-2">Outcome:</label>
+          <div class="col-sm-2">
+            <select id="outcome" class="form-control">
+              <option value="{{outcome_options.0.option_nm}}" {{outcome_options.0.selected}} >{{outcome_options.0.option_text}}</option>
+              <option value="{{outcome_options.1.option_nm}}" {{outcome_options.1.selected}} >{{outcome_options.1.option_text}}</option>
+              <option value="{{outcome_options.2.option_nm}}" {{outcome_options.2.selected}} >{{outcome_options.2.option_text}}</option>
+              <option value="{{outcome_options.3.option_nm}}" {{outcome_options.3.selected}} >{{outcome_options.3.option_text}}</option>
+              <option value="{{outcome_options.4.option_nm}}" {{outcome_options.4.selected}} >{{outcome_options.4.option_text}}</option>
+              <option value="{{outcome_options.5.option_nm}}" {{outcome_options.5.selected}} >{{outcome_options.5.option_text}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3"></div>
+          <label for="notes" style="color: #0c5449;" class="control-label col-sm-2">Notes:</label>
+          <div class="col-sm-2">
+            <textarea id="notes" class="form-control" cols="40" rows="10">{{clog_results.0.notes}}</textarea>
+          </div>
+        </div>    
+
+        <div class="form-group row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-11 row" style="text-align: center">
+            <button type="button" style="background-color:#0c5449; border-color:#0c5449;" class="btn btn-primary" onclick="updateClog()" />Update Contact</button>
+          </div>
+        </div>                    
+
+      </form>
+    </div>
+  </div>
+</body>
