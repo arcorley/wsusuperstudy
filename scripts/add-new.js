@@ -87,6 +87,7 @@ $(document).ready(function(){
 		}
 		else{
 			$("#future_contact_hidden").hide();
+			$("#future_contact_method").val('none');
 		}
 	});
 
