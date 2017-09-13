@@ -180,14 +180,20 @@ app.get('/participants_in_progress', function(req, res, next){
 	if (req.headers["x-forwarded-for"]){
 		if (req.session.name){
 			var context = {};
-			mysql.pool.query('SELECT * from super_study.participants_temp', function(err, rows, fields){
+			mysql.pool.query("SELECT ppt_id, ppt_first_nm, ppt_last_nm, ppt_cell_phone_no, ppt_email" + 
+				", case when completed_screen = 'yes' then 'Yes' else 'No' end as completed_screen" + 
+				", case when eligibility_status = 'yes' then 'Yes' else 'No' end as eligibility_status" + 
+				" from super_study.participants_temp" +
+				" order by completed_screen, eligibility_status, ppt_id;", 
+				function(err, rows, fields){
 				if(err){
 					next(err);
 					return;
 				}
 				context.ppt_results = rows;
 				res.render('participants_in_progress', context);
-			});
+				}
+			);
 		}
 		else{
 			res.redirect('lab_login');
