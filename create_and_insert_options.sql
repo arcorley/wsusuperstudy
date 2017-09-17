@@ -132,6 +132,7 @@ values
 ("contact_method","partner_cell","Partner Cell Phone"),
 ("contact_method","home_phone","Home Phone"),
 ("contact_method","email","Email"),
+("contact_method","in_person","In Person"),
 ("ra","angelia","Angelia"),
 ("ra","rachel","Rachel"),
 ("ra","megan","Megan"),
